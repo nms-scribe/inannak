@@ -1,33 +1,47 @@
 
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,700;0,800;1,700;1,800&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:ital,wght@0,700&display=swap');
 
 /* Override the body font to Merriweather */
 html {
     font-family: 'Merriweather', serif;
 }
 
-h1, h2, h3, h4, h5, h6, .sidebar {
+.sidebar {
     font-family: 'Work Sans', sans-serif;
     font-variant: small-caps;
+}
+
+.content h1, .content h2, .content h3, .content h4, .content h5, .content h6 {
+    font-family: 'Work Sans', sans-serif;
+    font-variant: small-caps;
+    border-bottom: 1px solid var(--sidebar-active);
+}
+
+.content .header:link {
+    color: var(--sidebar-active);
 }
 
 h1.menu-title {
     font-family: 'Merriweather', serif;
     font-variant: normal;
     font-style: italic;
+    color: var(--sidebar-active);
 }
 
 main h1:first-of-type+p::first-letter {
+    font-family: 'UnifrakturCook', 'Merriweather', serif;
     padding: 0 .3rem;
     margin: 0.5rem .5rem 0 0;
-    
-    font-size: 5rem;
-    font-weight: 900;
-    font-style: italic;
+    color: var(--fg);
+    font-size: 6.5rem;
+    font-weight: 700;
     float: left;
+    -webkit-text-stroke: 3px var(--sidebar-active);
+}
 
-    /*font-weight: 900;
-    font-style: italic;
-    font-size: xx-large;*/
+hr {
+    color: var(--sidebar-active);
+    
 }
