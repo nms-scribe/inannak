@@ -1,0 +1,33 @@
+
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,700;0,800;1,700;1,800&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+/* Override the body font to Merriweather */
+html {
+    font-family: 'Merriweather', serif;
+}
+
+h1, h2, h3, h4, h5, h6, .sidebar {
+    font-family: 'Work Sans', sans-serif;
+    font-variant: small-caps;
+}
+
+h1.menu-title {
+    font-family: 'Merriweather', serif;
+    font-variant: normal;
+    font-style: italic;
+}
+
+main h1:first-of-type+p::first-letter {
+    padding: 0 .3rem;
+    margin: 0.5rem .5rem 0 0;
+    
+    font-size: 5rem;
+    font-weight: 900;
+    font-style: italic;
+    float: left;
+
+    /*font-weight: 900;
+    font-style: italic;
+    font-size: xx-large;*/
+}
