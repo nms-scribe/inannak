@@ -1,5 +1,5 @@
 # Inannak Website
 
-This is the source for the Inannak website. See that for more information on what Inannak is.
+This is the source for the Inannak website, [which is here](https://nms-scribe.github.io/inannak/introduction.html).
 
 The contents of docs folder are automatically generated from another project.
