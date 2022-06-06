@@ -4,7 +4,7 @@
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>Page not found - Inannak: After the Gods</title>
-        <base href="inannak">
+        <base href="/">
 
 
         <!-- Custom HTML head -->
@@ -30,7 +30,7 @@
         <link rel="stylesheet" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        <link rel="stylesheet" href="additional.css">
+        <link rel="stylesheet" href="css/additional.css">
 
     </head>
     <body>
@@ -82,7 +82,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html">Introduction</a></li><li class="chapter-item expanded "><a href="chapter_1.html">Chapter 1</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="introduction.html">Introduction</a></li><li class="chapter-item expanded affix "><li class="part-title">History</li><li class="chapter-item expanded "><a href="origins.html"><strong aria-hidden="true">1.</strong> Origins</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="creation-of-inannak.html"><strong aria-hidden="true">1.1.</strong> The Creation of Inannak</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -163,6 +163,22 @@
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
 
 
 

@@ -1,6 +1,11 @@
 
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,700;0,800;1,700;1,800&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+/* Body text font*/
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+/* Occasional san-serif display font (title, nav-menu) */
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+/* Fancy header font */
+@import url('https://fonts.googleapis.com/css2?family=Vampiro+One&display=swap');
+/* Drop-cap font */
 @import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:ital,wght@0,700&display=swap');
 
 /* Override the body font to Merriweather */
@@ -13,33 +18,36 @@ html {
     font-variant: small-caps;
 }
 
-.content h1, .content h2, .content h3, .content h4, .content h5, .content h6 {
-    font-family: 'Work Sans', sans-serif;
+.content :is(h1, h2, h3, h4,h5, h6) {
+    font-family: 'Vampiro One', 'Work Sans', sans-serif;
     font-variant: small-caps;
     border-bottom: 1px solid var(--sidebar-active);
 }
 
-.content .header:link {
+.content :is(h1, h2, h3, h4,h5, h6) .header:link {
     color: var(--sidebar-active);
 }
 
 h1.menu-title {
-    font-family: 'Merriweather', serif;
-    font-variant: normal;
+    font-family: 'Work Sans', sans-serif;
+    font-variant: small-caps;
     font-style: italic;
+    font-weight: 700;
     color: var(--sidebar-active);
 }
 
 main h1:first-of-type+p::first-letter {
     font-family: 'UnifrakturCook', 'Merriweather', serif;
     padding: 0 .3rem;
-    margin: 0.5rem .5rem 0 0;
-    color: var(--fg);
+    margin: 0.5rem 0.3rem 0 0;
+    color: var(--sidebar-active);
     font-size: 6.5rem;
     font-weight: 700;
     float: left;
-    -webkit-text-stroke: 3px var(--sidebar-active);
+    -webkit-text-stroke: 2px var(--fg);
 }
+
+
 
 hr {
     color: var(--sidebar-active);
