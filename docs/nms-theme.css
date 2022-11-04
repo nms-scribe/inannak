@@ -534,6 +534,11 @@ section.rpg-credits .rpg-credits-legal {
     background-color: var(--content-background-dark);
 }
 
+#theme_toggler:checked ~ div.ltx_page_main > div.ltx_page_content .ltx_TOC {
+    color: var(--content-heading-dark);
+}
+
+
 /* Get rid of link colors */
 #theme_toggler:checked ~ :is(div, nav) .ltx_ref {
     color: inherit;
@@ -635,6 +640,12 @@ section.rpg-credits .rpg-credits-legal {
     color: var(--content-heading-light);
     background-color: var(--content-background-light);
 }
+
+#theme_toggler:not(:checked) ~ div.ltx_page_main > div.ltx_page_content .ltx_TOC {
+    color: var(--content-heading-light);
+}
+
+
 
 /* Get rid of link colors */
 #theme_toggler:not(:checked) ~ :is(div, nav) .ltx_ref {
@@ -938,6 +949,7 @@ nav.ltx_page_navbar li.ltx_tocentry_part > .ltx_ref {
 
 .ltx_page_content .ltx_TOC {
     font-family: var(--sans-body-font);
+    font-variant: small-caps;
 }
 
 
@@ -960,6 +972,10 @@ footer.ltx_page_footer .ltx_ref {
     text-decoration: none;
 }
 
+.ltx_page_content .ltx_TOC a {
+    text-decoration: none;
+}
+
 nav.ltx_page_navbar .ltx_ref > span {
 /* Makes the links in the navbar fill to the right edge bar when they are colored differently. */
     display: flex;
@@ -970,6 +986,8 @@ nav.ltx_page_navbar li.ltx_tocentry_appendix,
 nav.ltx_page_navbar li.ltx_tocentry_section {
     margin-top: 0.25rem;
 }
+
+
 
 /* quotations */
 
@@ -1140,8 +1158,14 @@ div.rpg-creature-stats table.ltx_tabular tbody .ltx_td {
     display: none;
 }
 
-.ltx_page_content article.ltx_document :is(div.ltx_authors, div.ltx_dates, div.ltx_para, figure.rpg-coverimage) {
+/* Center stuff on the title page */
+.ltx_page_content article.ltx_document > :is(div.ltx_authors, div.ltx_dates, div.ltx_para, figure.rpg-coverimage) {
     text-align: center;
+}
+
+/* But not if there's a section on the same page */
+.ltx_page_content article.ltx_document section {
+    text-align: inherit;
 }
 
 .ltx_page_content article.ltx_document div.ltx_para span.rpg-coverintro {
@@ -1165,6 +1189,12 @@ div.rpg-creature-stats table.ltx_tabular tbody .ltx_td {
 .ltx_page_content div.ltx_TOC ~ div.ltx_TOC {
     margin-top: 0px;
 }
+
+.ltx_page_content div.ltx_TOC ul {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
 
 .ltx_page_content .ltx_TOC .ltx_toclist li {
     list-style-type: none;
