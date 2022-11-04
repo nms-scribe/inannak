@@ -1163,17 +1163,18 @@ div.rpg-creature-stats table.ltx_tabular tbody .ltx_td {
     text-align: center;
 }
 
-/* But not if there's a section on the same page */
-.ltx_page_content article.ltx_document section {
-    text-align: inherit;
-}
-
 .ltx_page_content article.ltx_document div.ltx_para span.rpg-coverintro {
     /* Basically, I want to center all the ltx_para except this one. However, there's no CSS selector which is based on contents, so there's no way to identify it. so, align it to the left here, and set display to block so the text-align does something. */
     text-align: left;
     display: block;
 }
 
+/* But not if there's a section on the same page */
+.ltx_page_content article.ltx_document section {
+    text-align: inherit;
+}
+
+/* Make the cover image fit */
 .ltx_page_content article.ltx_document figure.rpg-coverimage img {
     object-fit: contain;
     width: 100%;
