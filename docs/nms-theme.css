@@ -89,7 +89,7 @@
     --navigation-text-light: #001616; /* primary shade 4 */
     --highlight-background-light: #B4D2D2; /*primary shade 1 */
     --highlight-text-light: #226666; /* primary shade 0 */
-    --rule-light: #AA3939; /* secondary 2 shade 0 */
+    --rule-light: #AA8439; /* secondary 1 shade 0 */ /* NOTE: Changed because I didn't like the red #AA3939; secondary 2 shade 0 */
     --annotation-background-light: #FFF3DA; /* secondary 1 shade 1 */
 
 }
