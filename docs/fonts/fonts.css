@@ -1,0 +1,251 @@
+/* Alice is licensed under the SIL Open Font License, Version 1.1. */
+/* alice */
+@font-face {
+	font-family: "Alice";
+	font-style: normal;
+	font-weight: 400;
+	font-stretch: 100%;
+	src: local("Alice Regular"), local("Alice-Regular"), url(alice.woff2) format("woff2");
+}
+
+/* Cinzel Decorative is licensed under the SIL Open Font License, Version 1.1. */
+
+/* cinzel-decorative-black */
+@font-face {
+	font-family: "Cinzel Decorative";
+	font-style: normal;
+	font-weight: 900;
+	font-stretch: 100%;
+	src: local("Cinzel Decorative Black"), local("CinzelDecorative-Black"), url(cinzel-decorative-black.woff2) format("woff2");
+}
+/* cinzel-decorative-bold */
+@font-face {
+	font-family: "Cinzel Decorative";
+	font-style: normal;
+	font-weight: 700;
+	font-stretch: 100%;
+	src: local("Cinzel Decorative Bold"), local("CinzelDecorative-Bold"), url(cinzel-decorative-bold.woff2) format("woff2");
+}
+/* cinzel-decorative */
+@font-face {
+	font-family: "Cinzel Decorative";
+	font-style: normal;
+	font-weight: 400;
+	font-stretch: 100%;
+	src: local("Cinzel Decorative Regular"), local("CinzelDecorative-Regular"), url(cinzel-decorative.woff2) format("woff2");
+}
+
+
+
+/* Libertinus Mono is licensed under the SIL Open Font License, Version 1.1. */
+
+/* libertinus-mono */
+@font-face {
+	font-family: "Libertinus Mono";
+	font-style: normal;
+	font-weight: 400;
+	font-stretch: 100%;
+	src: local("Libertinus Mono Regular"), local("LibertinusMono-Regular"), url(libertinus-mono.woff2) format("woff2");
+}
+
+
+/* Lora is licensed under the SIL Open Font License, Version 1.1. */
+
+/* lora-bold */
+@font-face {
+	font-family: "Lora";
+	font-style: normal;
+	font-weight: 700;
+	font-stretch: 100%;
+	src: local("Lora Bold"), local("Lora-Bold"), url(lora-bold.woff2) format("woff2");
+}
+/* lora-bold-italic */
+@font-face {
+	font-family: "Lora";
+	font-style: italic;
+	font-weight: 700;
+	font-stretch: 100%;
+	src: local("Lora Bold Italic"), local("Lora-BoldItalic"), url(lora-bold-italic.woff2) format("woff2");
+}
+/* lora-italic */
+@font-face {
+	font-family: "Lora";
+	font-style: italic;
+	font-weight: 400;
+	font-stretch: 100%;
+	src: local("Lora Italic"), local("Lora-Italic"), url(lora-italic.woff2) format("woff2");
+}
+/* lora-medium */
+@font-face {
+	font-family: "Lora";
+	font-style: normal;
+	font-weight: 500;
+	font-stretch: 100%;
+	src: local("Lora Medium"), local("Lora-Medium"), url(lora-medium.woff2) format("woff2");
+}
+/* lora-medium-italic */
+@font-face {
+	font-family: "Lora";
+	font-style: italic;
+	font-weight: 500;
+	font-stretch: 100%;
+	src: local("Lora Medium Italic"), local("Lora-MediumItalic"), url(lora-medium-italic.woff2) format("woff2");
+}
+/* lora */
+@font-face {
+	font-family: "Lora";
+	font-style: normal;
+	font-weight: 400;
+	font-stretch: 100%;
+	src: local("Lora Regular"), local("Lora-Regular"), url(lora.woff2) format("woff2");
+}
+/* lora-semibold */
+@font-face {
+	font-family: "Lora";
+	font-style: normal;
+	font-weight: 600;
+	font-stretch: 100%;
+	src: local("Lora SemiBold"), local("Lora-SemiBold"), url(lora-semibold.woff2) format("woff2");
+}
+/* lora-semibold-italic */
+@font-face {
+	font-family: "Lora";
+	font-style: italic;
+	font-weight: 600;
+	font-stretch: 100%;
+	src: local("Lora SemiBold Italic"), local("Lora-SemiBoldItalic"), url(lora-semibold-italic.woff2) format("woff2");
+}
+
+
+/* Mulish is licensed under the SIL Open Font License, Version 1.1. */
+
+/* mulish-black */
+@font-face {
+	font-family: "Mulish";
+	font-style: normal;
+	font-weight: 900;
+	font-stretch: 100%;
+	src: local("Mulish Black"), local("Mulish-Black"), url(mulish-black.woff2) format("woff2");
+}
+/* mulish-black-italic */
+@font-face {
+	font-family: "Mulish";
+	font-style: italic;
+	font-weight: 900;
+	font-stretch: 100%;
+	src: local("Mulish Black Italic"), local("Mulish-BlackItalic"), url(mulish-black-italic.woff2) format("woff2");
+}
+/* mulish-bold */
+@font-face {
+	font-family: "Mulish";
+	font-style: normal;
+	font-weight: 700;
+	font-stretch: 100%;
+	src: local("Mulish Bold"), local("Mulish-Bold"), url(mulish-bold.woff2) format("woff2");
+}
+/* mulish-bold-italic */
+@font-face {
+	font-family: "Mulish";
+	font-style: italic;
+	font-weight: 700;
+	font-stretch: 100%;
+	src: local("Mulish Bold Italic"), local("Mulish-BoldItalic"), url(mulish-bold-italic.woff2) format("woff2");
+}
+/* mulish-extrabold */
+@font-face {
+	font-family: "Mulish";
+	font-style: normal;
+	font-weight: 800;
+	font-stretch: 100%;
+	src: local("Mulish ExtraBold"), local("Mulish-ExtraBold"), url(mulish-extrabold.woff2) format("woff2");
+}
+/* mulish-extrabold-italic */
+@font-face {
+	font-family: "Mulish";
+	font-style: italic;
+	font-weight: 800;
+	font-stretch: 100%;
+	src: local("Mulish ExtraBold Italic"), local("Mulish-ExtraBoldItalic"), url(mulish-extrabold-italic.woff2) format("woff2");
+}
+/* mulish-extralight */
+@font-face {
+	font-family: "Mulish";
+	font-style: normal;
+	font-weight: 200;
+	font-stretch: 100%;
+	src: local("Mulish ExtraLight"), local("Mulish-ExtraLight"), url(mulish-extralight.woff2) format("woff2");
+}
+/* mulish-extralight-italic */
+@font-face {
+	font-family: "Mulish";
+	font-style: italic;
+	font-weight: 200;
+	font-stretch: 100%;
+	src: local("Mulish ExtraLight Italic"), local("Mulish-ExtraLightItalic"), url(mulish-extralight-italic.woff2) format("woff2");
+}
+/* mulish-italic */
+@font-face {
+	font-family: "Mulish";
+	font-style: italic;
+	font-weight: 400;
+	font-stretch: 100%;
+	src: local("Mulish Italic"), local("Mulish-Italic"), url(mulish-italic.woff2) format("woff2");
+}
+/* mulish-light */
+@font-face {
+	font-family: "Mulish";
+	font-style: normal;
+	font-weight: 300;
+	font-stretch: 100%;
+	src: local("Mulish Light"), local("Mulish-Light"), url(mulish-light.woff2) format("woff2");
+}
+/* mulish-light-italic */
+@font-face {
+	font-family: "Mulish";
+	font-style: italic;
+	font-weight: 300;
+	font-stretch: 100%;
+	src: local("Mulish Light Italic"), local("Mulish-LightItalic"), url(mulish-light-italic.woff2) format("woff2");
+}
+/* mulish-medium */
+@font-face {
+	font-family: "Mulish";
+	font-style: normal;
+	font-weight: 500;
+	font-stretch: 100%;
+	src: local("Mulish Medium"), local("Mulish-Medium"), url(mulish-medium.woff2) format("woff2");
+}
+/* mulish-medium-italic */
+@font-face {
+	font-family: "Mulish";
+	font-style: italic;
+	font-weight: 500;
+	font-stretch: 100%;
+	src: local("Mulish Medium Italic"), local("Mulish-MediumItalic"), url(mulish-medium-italic.woff2) format("woff2");
+}
+/* mulish */
+@font-face {
+	font-family: "Mulish";
+	font-style: normal;
+	font-weight: 400;
+	font-stretch: 100%;
+	src: local("Mulish Regular"), local("Mulish-Regular"), url(mulish.woff2) format("woff2");
+}
+/* mulish-semibold */
+@font-face {
+	font-family: "Mulish";
+	font-style: normal;
+	font-weight: 600;
+	font-stretch: 100%;
+	src: local("Mulish SemiBold"), local("Mulish-SemiBold"), url(mulish-semibold.woff2) format("woff2");
+}
+/* mulish-semibold-italic */
+@font-face {
+	font-family: "Mulish";
+	font-style: italic;
+	font-weight: 600;
+	font-stretch: 100%;
+	src: local("Mulish SemiBold Italic"), local("Mulish-SemiBoldItalic"), url(mulish-semibold-italic.woff2) format("woff2");
+}
+
+

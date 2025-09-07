@@ -1,0 +1,173 @@
+:root {
+    --header-font: "Alice", serif;
+    --main-body-font: "Lora", serif;
+    --sidebar-font: "Mulish", sans-serif;
+    --title-font: "Cinzel Decorative", serif;
+    --mono-font: "Libertinus Mono", monospace;
+}
+
+/* Color scheme updates */
+
+.ayu {
+    --highlight: #ffb454;
+    --highlight-complement: #004BAB;
+}
+
+.coal {
+    --highlight: #3473ad;
+    --highlight-complement: #CB8C52;
+}
+
+.light {
+    --highlight: #1f1fff;
+    --highlight-complement: #E0E000;
+}
+
+.navy {
+    --highlight: #2b79a2;
+    --highlight-complement: #D4865D;
+}
+
+.rust {
+    --highlight: #e69f67;
+    --highlight-complement: #196098;
+}
+
+@media (prefers-color-scheme: dark) {
+    .light.no-js {
+        --highlight: #3473ad;
+        --highlight-complement: #CB8C52;
+    }
+}
+
+
+/* Use different fonts for different things */
+html {
+  font-family: var(--main-body-font);
+}
+
+.content .header {
+  font-family: var(--header-font);
+}
+
+.content h1 .header {
+  font-family: var(--title-font);
+  font-variant: small-caps;
+}
+
+.part-title {
+  font-variant: small-caps;
+}
+
+.sidebar {
+  font-family: var(--sidebar-font);
+}
+
+table caption {
+  font-family: var(--sidebar-font);
+  font-weight: bold;
+  font-variant: small-caps;
+}
+
+/* Chapter and section headings plus hr get some special looks */
+.content .header {
+  /* I have to make this important because custom CSS is included first, so the general.css overrides the color */
+  color: var(--highlight) !important;
+}
+
+.content h1 {
+  text-align: center;
+}
+
+.content h1, h2 {
+  border-bottom-width: 1px;
+  border-bottom-color: var(--highlight-complement);
+  border-bottom-style: solid;
+
+}
+
+hr {
+  color: var(--highlight-complement);
+}
+
+/* Special look for the chapter-flourish */
+.chapter-flourish {
+  font-variant: small-caps;
+}
+
+/* Adjust table captions */
+
+table caption {
+  margin-bottom: 0.5em;
+  color: var(--highlight);
+}
+
+/* The Title page elements get some different looks */
+
+h1.inannak-main-title {
+  border-bottom-style: hidden;
+}
+
+
+.inannak-main-title .header {
+	font-family: var(--title-font);
+	font-weight: 900;
+	font-variant: small-caps;
+	font-size: 10rem;
+	line-height: 1.1em;
+}
+
+.inannak-main-title-author {
+  font-size: 4rem;
+  text-align: center;
+  font-variant: small-caps;
+  font-weight: bold;
+  color: var(--highlight);
+}
+
+/* The Credits elements get some different looks */
+.book-credits {
+  font-family: var(--sidebar-font);
+  column-count: 2;  
+  column-fill: balance;
+  margin-left: 2em;
+}
+
+.book-credits dl {
+  margin-top: 0;
+}
+
+.book-credits dt {
+  font-weight: bold;
+  display: inline-block;
+}
+
+.book-credits dd {
+  display: inline;
+  margin-left: 0.5em;
+}
+
+.book-credits dd::after {
+/* This makes sure that the dd breaks to the next line after the end */
+  content: '';
+  display: block;
+}
+
+/* Fix the mdbook-pagetoc stuff to fit into the scheme */
+
+.pagetoc {
+  font-family: var(--sidebar-font);
+  line-height: 1.5em;
+  font-size: 0.875em;
+  background: var(--sidebar-bg);
+}
+
+.pagetoc a.pagetoc-H1.active,
+.pagetoc a.pagetoc-H2.active,
+.pagetoc a.pagetoc-H3.active,
+.pagetoc a.pagetoc-H4.active,
+.pagetoc a.pagetoc-H5.active,
+.pagetoc a.pagetoc-H6.active {
+  /* I have to make this important to override what pagetoc.css does, which is also "important", apparently. */
+  color: var(--sidebar-active) !important;
+}

@@ -1,0 +1,406 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>People - The World of Inannak</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="theme/custom.css">
+        <link rel="stylesheet" href="theme/pagetoc.css">
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">The World of Inannak</h1>
+
+                    <div class="right-buttons">
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="people"><a class="header" href="#people">People</a></h1>
+<p><span class="chapter-flourish">The inhabitants of Inannak are diverse.</span> No scholar has records of every self-aware species that lives on land or sea, let alone the rest of the universe. This chapter is a brief summary of the major peoples that may be found in the universe around Inannak. Others may be found as well, isolated on remote islands, hidden in deep caverns, or even somewhere out in the world of dream or spirit.</p>
+<p>The peoples of Inannak can be divided into two groups: Immortals and Mortals. Although those terms are imprecise.</p>
+<!-- -->
+<h2 id="immortals"><a class="header" href="#immortals">Immortals</a></h2>
+<p>Immortal peoples are known for their magical nature, which provides powers that most mortals can not achieve. Although the term translates as undying, many of these peoples are merely long-lived.</p>
+<p><strong>Deities</strong>. Some immortals -- and occasionally a mortal -- gain so much power that they can do whatever they wish. Mortals fear these creatures. Sometimes, the mortals worship them in hopes that the immortal will protect them, or at least spare them from its anger. Other times, these immortals force mortals to become their servants. When a large enough group of mortals worships and sacrifices to such a creature, that creature gains even more power, and is called a deity.</p>
+<p>Most deities are <em>lesser deities</em>, who enjoy the worship of small groups of people, sometimes given unwittingly through superstition and ancient tradition. <em>Greater deities</em> enjoy the worship of entire nations.</p>
+<p>Since the Mortal War and the destruction of the hebdomad, there are no longer any greater deities on the land and sea of Inannak, or the Underneath. Even most of the lesser deities have been destroyed.</p>
+<p><strong>The Hebdomad</strong>. The hebdomad were a group of seven powerful deities that ruled over most of Inannak for thousands of years. They were daimons of ouranian, chthonian, tromian and agrian descent. They were defeated by mortals in the Mortal War several centuries ago. Most were killed, along with lesser deities that aligned with them. The rest were banished beyond the stars.</p>
+<p><strong>The Titans</strong>. Titans were a specific group of deities that ruled for eons on Inannak before the God War. They were daimons of tromian descent. While most were killed or banished beyond the stars, a few were allowed to remain. Of these, some have even survived the mortal war. They likely hide from mortals if they are gathering their power to retake their place after the defeat of the hebdomad.</p>
+<h3 id="daimons"><a class="header" href="#daimons">Daimons</a></h3>
+<!-- -->
+<!-- -->
+<!-- -->
+<!-- -->
+<!-- -->
+<!-- -->
+<p>A daimon is an immortal creature which can move between the physical world and non-physical worlds without leaving their bodies. Sometimes these people will be referred to as spirits, but that word implies that they only exist in the world of spirit. There are at least five peoples that can be called daimons, but each is believed to have different origins, and they may not have originally been related.</p>
+<p><strong>Ouranian</strong>. Ouranians originated from the four planetary heavens, which one is unknown. Their name is not related to the name of the moon Oria, but to an ancient mortal word for the Overtop. Ouranians are usually humanoid, but whatever their natural form they are larger and more beautiful than the average. They often have glowing auras around them, or light mists raising where they step. Feathered wings are not uncommon. Note that an ouranian's beauty is not an indicator of their altruism or goodwill towards mortals.</p>
+<p><strong>Chthonian</strong>. Chthonians originated in the underworld. Most are only vaguely humanoid, although there are some who are more or less so. They have scaly or leathery skin, horns, tails, and occasionally bat-like wings. Flames and smoke often surround them. The chthonians are the only daimons that originated in the world of spirit, as the other daimon's origins are reached via the world of dream.</p>
+<p><strong>Agrian</strong>. Agrians originated on the moon of Oria, but also enjoy the wild places on land and sea. They resemble the natural things of the physical world, taking on the appearance of plants and beasts. Often they are humanoid, almost mortal in appearance, but with parts from other creatures such as antlers or hooves.</p>
+<p><strong>Oneirian</strong>. Oneirians originated on the moon of Eilwain. They are usually humanoid, with thin limbs, delicate features and pale skin. They often have insect-like wings. Their form can vary greatly, and many can take on multiple forms. The Oneirians follow a rather odd but strict set of traditions and rules, which makes their behavior difficult to predict.</p>
+<p><strong>Tromian</strong>. Tromians originated from beyond the stars. Their forms are chaotic, rarely humanoid, often asymmetrical. They are known for their mind magic.</p>
+<p><strong>Mixed Lineage</strong>. Daimons beget young daimons with magic. They can use this same magic to beget children with many other peoples, from other daimons to most mortals, despite being otherwise incompatible. Daimons of mixed heritage do not blend traits the way mortals do. Instead, their children either gain parts of each parent, or an ability to transform between the two natures.</p>
+<h3 id="dragons"><a class="header" href="#dragons">Dragons</a></h3>
+<p>Dragons are huge creatures with wings and long serpentine bodies, with coats of fur, scales and feathers in vivid colors. They are known for their deadly breath and innate mastery of magic. Many have the ability to take the form of mortals. Dragons generally live in isolated places, preferring to be left alone to their treasures. Dragons are not truly immortal, they are bound by the laws of death, but they do live for several millennia, and are magical in nature.</p>
+<p>It was believed by some that dragons were once immortal and more numerous. There may have been dragon deities among early mortals. But those powerful dragons were massacred by the Titans in the Dragon War, and the dragons of today are much weaker than the ones of old. Since that time, most dragons have chosen to avoid mortals, lest they risk another war that would destroy their people. Now that the hebdomad are out of power, some dragons have begun to secretly accept the worship of mortals in return for protection. Some of these may have ambitions of restoring their legendary status.</p>
+<p>The number of dragons in the world is quite small, there are only about 2,000 left, and perhaps 800 are land-based. This does not include smaller dragon kin like drakes, dragonnels, wyverns, and pseudodragons. It is rare for dragon young to survive to adulthood, and dragons only lay their eggs once a century. However, dragons who can take mortal form have also been known to beget children by mortals. Their descendants remain mortal with some dragon-like traits.</p>
+<p>Among the legends it is said that dragons once came in up to fifteen different types, each with a specific color and danger of breath. However, today each dragon is a unique combination of appearance and powers. Dragons can have scales, hair, feathers, lightly furred or even smooth skin, sometimes more than one covering in different parts of the body. Their coloring is vivid, often with a metallic sheen or a translucent crystalline appearance. Patterns of different colors or material are common.</p>
+<p>Almost all dragons are amphibious, and as mentioned, the majority of dragons dwell underwater. These dragons tend to come in darker colors than their land-dwelling kin, and sleeker skin. They also vary much more in appearance. Some have shells like turtles, or fins and webbed limbs. Except for fire, breath among the sea dwelling dragons vary just as much as their land-dwelling kin, including liquid versions of gas-based breath.</p>
+<h3 id="sagani"><a class="header" href="#sagani">Sagani</a></h3>
+<!-- -->
+<p>Sagani, also known as Elementals, are living beings associated with pure elements that make up the physical world. They are physical beings, whose bodies are formed mostly of one or a few elements, and are only found on the physical world of Inannak. For example, there are elementals made of fire, stone, air and water. Elementals are not limited to those four classical elements, they can be associated with other forms of energy and matter as well.</p>
+<p>It is a common misconception that sagani can disappear into the otherworlds at will. This comes from their ability to meld themselves and disappear into large amounts of their elements or similar elements. They can travel easily and undetected through these substances and possibly teleport short distances to other pockets of the same substance.</p>
+<p>Sagani are as diverse as natural beasts, and just as varying in levels of sapience and sentience. Many sapient sagani have innate magical abilities, some of such power that they could compete with deities. Such creatures are known as sagani nobles, although a word from an ancient mortal language refers to them as Genies. Sagani rarely interact with other creatures, preferring to live far away from them among their own kind. On occasion, a sagani of more independent tendencies may be intrigued by mortal society. More commonly, another creature may use magic to bind the sagani to harness their abilities. This last has caused much conflict between the sagani and other peoples.</p>
+<h3 id="undead"><a class="header" href="#undead">Undead</a></h3>
+<p>The term undead is a broad category which can apply to four different types of creatures. The only thing they have in common is an association with and transgression of the laws of death -- the natural laws which cause a mortal's soul to leave their body upon death and travel to the underworld. This relationship creates a unique force surrounding these creatures, sometimes called the shadow of undeath, which can be used to identify them and on occasion, repel them.</p>
+<p>The undead can be grouped into four types:</p>
+<p><strong>Animated Undead</strong>. Animated undead are corpses and other bodily remains that have been magically animated. These creatures have been given a semblance of life, usually in order to fulfill some specific task for their creator. The shadow of undeath for these undead comes from the parts of the magic required to unnaturally deter normal decomposition. Rarely are animated undead sapient, but this is not impossible.</p>
+<p><strong>Ghoul</strong>. Ghouls are creatures that feed upon corpses and the souls of the living and dead. They are not undead themselves but living creatures. However, the shadow of undeath surrounds them due to the energy of the souls they feed on. There are many varieties of ghoul, and some say there may be a hierarchy reminiscent of human society.</p>
+<p><strong>Phantom</strong>. Phantoms are souls that have been unnaturally prevented from continuing to the underworld. Sometimes, this may be caused by the will of the soul itself, with some minor magical aid to do so. Other times they are stuck without intention.</p>
+<p>Phantoms do not have physical bodies, and live entirely in the world of spirit, but some have learned how to interact with the physical world, or even make themselves visible. This can be done because of the way physical matter interacts with the world of spirit. A soul which has not yet reached the underworld can also be considered a phantom undead, as can all the souls in the underworld.</p>
+<p><strong>Daimonic Undead</strong>. A few types of cthonian daimons have taken on the shadow of undeath due to their long contact with phantoms and other undead. This shadow can be a helpful disguise, as such creatures are often much more powerful than normal undead.</p>
+<p><strong>Denier of Death</strong>. On occasion, mortals will attempt to find some way to avoid death and continue to live beyond their demise. Immortality through this means is impossible. However, there are daimons, usually chthonian or tromian, who enjoy deceiving such mortals into believing this is possible.</p>
+<p>The daimon will convince them to take some other action, which appears to be powerful magic to keep them alive, such as extracting their life force into a vessel, or accepting the bite of a blood-draining creature. But the real result of this action is to capture their soul, preventing its journey to the underworld.</p>
+<p>The daimon will then take over the body, gaining access to their memories and personality, as well as powers and status which the daimon doesn't normally have. The trapping of the soul slows down composition, giving them a new home for a long time.</p>
+<p>Of course, such daimons would assure you that this practice is only used by weaker daimons, and that they alone truly have the power to grant such immortality.</p>
+<h3 id="former-mortals"><a class="header" href="#former-mortals">Former Mortals</a></h3>
+<p>Of all the immortal peoples of Inannak, the rarest are those who were once mortal. These unique individuals have gained or been given immortality, either through magic or the work of another immortal. Most of these immortals are wizards or sorcerers, but there are some who have little magic skill of their own. Former mortals could become deities with enough power and skill, but most learn that it is far easier to live semi-anonymously among the other mortals.</p>
+<h2 id="mortals"><a class="header" href="#mortals">Mortals</a></h2>
+<p>The majority of sapient species on Inannak are bound by the laws of death, an ancient law written into the fabric of the universe. These species are called mortals. The law of death requires a living creature to age and eventually die, so that their soul travels to the underworld. Plants and beasts of Inannak are also bound by the law of death, but the term mortal usually refers to sapient peoples. This section describes most of the well-known mortal species of Inannak.</p>
+<!-- -->
+<p>Most sapient mortals are believed to descend from a single species, who lived on Inannak long ago. However, after eons of life under the dragons, titans and the hebdomad, they have been divided into numerous species.</p>
+<h3 id="the-eight-liberated-species"><a class="header" href="#the-eight-liberated-species">The Eight Liberated Species</a></h3>
+<p>Most of the mortals of Inannak belong to one of the eight species who were once subject to the hebdomad. Before the Mortal War, they knew themselves as the Vassal Species. Since the war and the defeat of the hebdomad, they call themselves the Liberated Species. Each of these groups was subject to one deity in the hebdomad, known as their patron. It is unknown whether those deities raised these species out of earlier mortals, or took species already existing as they were. It may be a mix of both.</p>
+<h4 id="elves"><a class="header" href="#elves">Elves</a></h4>
+<!-- -->
+<p>The Älveen, called Elves in Freetongue, are a diverse group. Their legends speak of having emerged from the underground, and some of them have returned there. They were the people of the Sabowth, the War King, who raised the High Elves as leaders over all of them. There is some evidence that the Elves have Oneirian blood. Sabowth had divided the Älveen into a number of castes. The prejudices each caste has for each other remain despite the banishment of Sabowth centuries ago. The separation of the castes also gave them distinctive appearances over the millennia. Elves live in small communities, even among the most civilized, preferring to surround their villages and fortresses with natural wilderness for protection. These are the primary castes.</p>
+<p><strong>Council Elves</strong>. (<em>Äľveiün</em>) Sabowth's personal council, a small set of less than a dozen families, ruled over all the Elves, and by their reckoning, all mortals. They were loyal to Sabowth until the very end, and only a few remain today. These are often considered part of the High Elves.</p>
+<p><strong>High Elves</strong>. (<em>Äľvepähüülhän</em>) The High Elves were the nobility, military officers, and wealthiest merchants. The majority of these remained loyal to Sabowth during the Mortal War. Since the Mortal War, High Elves, whether they remained loyal or not, have become pariahs. This has led to a harsh political division between them and the other Elves.</p>
+<p><strong>Wood Elves</strong>. (<em>Äľveshüchiin</em>) The Wood Elves were the priests and scholars. Sabowth, in what some High Elves considered a mistake, allowed this group a sense of freedom of scholarship and thought. Thus, the philosophies of the early apostasy were well known in their circles. As they also had close contact with their lesser brethren and saw how they were treated under the hebdomad, many were quick to side with the rebellion when it began. The name "wood elf" does not come from any affiliation with wood or forests, but a metaphor: if Elvendom were a forest, the wood elves make up the trees, while the high elves are the leaves. This metaphor ignores the gnomes, firbolgs and goblins.</p>
+<p><strong>Deep Elves</strong>. (<em>Öijhärüün</em>) Years ago, perhaps before the God War, groups of elves descended, to cavern complexes deep in the underneath. Sabowth still ruled over these elves, but allowed them their own hierarchies of authority. As groups of gnomes and goblins also joined them, they became the Äľveiün of the underground. However, during the Mortal War, most took the side of the apostasy.</p>
+<p><strong>Gnomes</strong>. (<em>Ngomeen</em>) The gnomes were the craftsmen, tradesmen, and lesser merchants. Many of this caste lived and worked in underground complexes, but there were just as many who lived in the forests. Certain groups of gnomes, called Deep Gnomes, descended with the Deep Elves underground long ago, and their descendants are still occasionally seen.</p>
+<p><strong>Firbolgs</strong>. (<em>Fiirböľghön</em>) The Firbolgs were farmers and herdsmen. The firbolgs tended to live in more remote areas near their fields or herds. This meant they were often separated from the rest of the Älveen, creating differences in needs and custom.</p>
+<p><strong>Goblins</strong>. (<em>Ghöbľeen</em>) This was the lowest caste of the Älveen, and were used as laborers and common soldiers. In Inannak, Goblins are not silly and dumb, as that is only a stereotype of their caste. From this caste, Sabowth pulled out two groups for special jobs.</p>
+<ul>
+<li>
+<p><em>Hobgoblins</em>. (<em>Hhöghöbľeen</em>) were the fighting leaders, the corporals and sergeants of the Elven armies. By tradition, the lowest division of goblin infantry was a guard team of six soldiers. The head of this team was the hobgoblin, which means "sixth goblin".</p>
+</li>
+<li>
+<p><em>Bugbears</em>. (<em>Böighbärän</em>) were the strongest of the goblins, used for brute force and heavy fighting. It's possible that the first part of the word comes from the numbers two and three, with the sense that these goblins were "worth" two or three of the others.</p>
+</li>
+</ul>
+<h4 id="gnoles"><a class="header" href="#gnoles">Gnoles</a></h4>
+<p>Gnoles are hairy humanoids with long snouts and sharp teeth. Their appearance varies greatly, but depending on their family and nation their faces can be reminiscent of canine or feline animals. They are carnivores, and known to be easily incited into violence and war. Before the Mortal Wars, this trait was encouraged by their patron Ildabowth, as well as the rest of the hebdomad. Ildabowth enjoyed sowing chaos in the ordered civilizations of the other mortals, and his siblings would often use his mortals' services as a threat to keep the mortals in place. Ildabowth's mastery of the underworld made it possible for the Gnoles to move from place to place unseen through caverns underground.</p>
+<p>As the apostasy began to spread to the Gnoles through interaction with humans, an occult religious movement began to emerge among the Gnoles who sought to tame their fury and use it for making the world better and bringing peace. It was this cult that initiated the first successful rebellion that began the Mortal War. Since the war, the Gnole apostacists movement continues to grow. Although it is not rising without conflict -- there are still many Gnoles loyal to Ildabowth, even dead -- it has garnered some respect and redemption for the Gnole's past in the eyes of other mortals.</p>
+<!-- -->
+<h4 id="humans"><a class="header" href="#humans">Humans</a></h4>
+<p>Humans, while not as physically diverse in form as other mortal peoples, are quite diverse in culture and thought. Although raised up among the mortals by Oria, Lady of the Bow, as master hunters, she enjoyed watching them form themselves into complex and unique societies -- as long as she retained final control. The freedom that she allowed them was a major factor leading to the apostasy. There are too many human nations to list here.</p>
+<!-- -->
+<blockquote>
+<h5 id="on-little-and-big-folk"><a class="header" href="#on-little-and-big-folk">On Little and Big Folk</a></h5>
+<p>Humans on Inannak are more diverse in appearance and traits than on most fantasy worlds. If your game makes use of short humanoids called halflings, or for that matter human-like creatures on any end of the size spectrum, they would be human peoples on Inannak.</p>
+</blockquote>
+<h4 id="mantids"><a class="header" href="#mantids">Mantids</a></h4>
+<p>Eilwain, She Who Knows, was more careful in the design for her mortals. While others stuck with the flesh and bipedal form that mortals already had, she designed her people with more efficiency and more durability. She gave them the shape of insects, giving them extra limbs to work and fight with. She gave them hard armor plating for protection, and taught them many spells to help them assist her. Eilwain understood that freedom of choice and thought would lead to rebellion and dispute, so she gave them a psychic connection to each other that would make independent thought difficult.</p>
+<p>During the Mortal War, the Mantids fought for Eilwain with great loyalty, until they didn't. The apostasy found ways to speak with the Great Queens of the Mantids and convince them of their cause, and once they were convinced so were their hive mates. Eilwain's armies were cut by two thirds, and as the Mantids dismantled her constructs she knew her doom was imminent, and she took her own life.</p>
+<!-- -->
+<h4 id="orghu"><a class="header" href="#orghu">Orghu</a></h4>
+<p>When Atton looked upon the mortals he chose for his own, he wanted them to stand out from the others. The Orghu are generally larger than other mortals, and many have quite unique features of appearance. They are known for their artistic traditions, ingrained into them by Atton, especially arts of performance: music, dancing and drama. Atton likes entertainment, and in addition to performances, he enjoyed watching his people fight each other in his arenas, which means Orghu culture is no stranger to violence. Atton grouped the Orghu into five peoples.</p>
+<p>Once the apostasy began to grow among the Orghu, their songs, poems and plays began to turn to subtle subversion, which helped it spread throughout much of the world. In secret, hidden carefully from the eyes of Atton and other gods, the Orghu would display more blatant blasphemy. Eloquent speeches by Oni brought many peasants to the cause.</p>
+<p>Many of the early rebellions of the Mortal Wars were strengthened by the swords of Orghu gladiators.</p>
+<p><strong>Orcs</strong>. The smallest of the Orghu, orcs resemble large humans with long, up-turned snouts and green and grey skin. If a group of traveling musicians is stopping in town for a performance, it is common for most of them to be Orcs, perhaps with an Ogre for vocals.</p>
+<p><strong>Ogres</strong>. Similar to Orcs, but larger, and with shorter snouts. Ogres grew to their great size in the fighting arenas, but their great lungs are built for their beautiful voices -- making them excel at singing and poetry.</p>
+<p><strong>Trolls</strong>. Tall and gangly, with more humanoid faces. Trolls were built with Atton's sense of medicine throughout, leading to their famous self-regeneration ability. Although the regeneration mostly grew out of their need to survive the fighting arenas, it also helps them learn substantial knowledge in medicine, which leads to many trolls being excellent healers and physicians.</p>
+<p><strong>Oni</strong>. Shorter trolls. Atton designed the Oni for their acting skills, and their magical entertainment.</p>
+<p><strong>Ettins</strong>. Resemble trolls with two heads. Ettins were Atton's favorite -- and their name may be related -- the result of a thought that emerged one night during a drunken conversation with Eilwain, "two heads are better than one". Ettins were the result. Their comedy shows are famous through Inannak, and were said to be one of Atton's favorite forms of entertainment.</p>
+<h4 id="saurians"><a class="header" href="#saurians">Saurians</a></h4>
+<p>When Eow sought her own vassals, she found inspiration in the appearance of dragons. Her Saurians were created in the same humanoid form as other vassals, but their skin cover ranges from feathers, to scales to amphibious skin. There are at least five species who owed fealty to Eow.</p>
+<p>Eow's vassals were small in number, and she provided them places to live in places other mortals avoided: dismal swamps, remote forests, rugged badlands, and the Underneath. But she bade them travel among the other mortals as traders and vagabonds. For she could choose to see through any of their eyes and hear through their ears to follow the workings of mortal society. This power was known as Eow's Gaze, and there is some evidence that Eow was also able to use it with willing mortals of other species.</p>
+<p>Before the Mortal Wars, the Saurians were seen as spies by the other mortals, and the apostasy and rebellions avoided contact with them. But many Saurians had found tricks to avoid Eow's Gaze, and a parallel rebellion spread among them as well. As the Mortal War raged, some were able to prove their skills and offer their services to spy on the loyalists.</p>
+<p><strong>Tengu</strong>. Tengu are feather-covered, usually black feathers, humanoid with wing-like arms and large beaks. They live in badlands, deserts, and rocky landscapes. Before the Mortal Wars they wandered among other mortal civilizations as tinkers. They were turned away by communities sympathetic to the rebellion during the Mortal Wars, and are still seen with suspicion.</p>
+<p><strong>Crocodilians</strong>. Scaled humanoid, with long, crocodyliform snouts. Despite their name, Crocodilians live on land, and even survive in dry deserts, although they prefer grasslands and forests. Crocodilians often lived among other mortals as laborers and soldiers. They were often used by the Hebdomad as guards.</p>
+<!-- -->
+<p><strong>Troglodyte</strong>. In ancient times, Eow sent a branch of her Crocodilians into the Underneath so she could see what happened there. Troglodytes are smaller than their cousins, with shorter and wider snouts. When Eow learned that she could not trust all of her vassals, she made use of Troglodytes to emerge from caves at night to spy on rebel strongholds and camps. The apostasy did not spread far among Troglodytes, and many remain loyal to Eow and seek vengeance for her death.</p>
+<p><strong>Batrachians</strong>. Small, smooth skinned creatures, resembling frogs (but not amphibian), who prefer to live in moist environments. They often provide their services navigating and operating freshwater craft. They find saltwater uncomfortable, and prefer not to work on ocean-going vessels.</p>
+<!-- -->
+<p><strong>Salamandrian</strong>. Tall, smooth skinned creatures, vaguely like tall batrachians, except their skin is evolved to survive high heat. They place their villages near volcanoes and lava, and are rarely found in other mortal lands.</p>
+<h4 id="sea-peoples"><a class="header" href="#sea-peoples">Sea Peoples</a></h4>
+<p>The Sea Peoples (Old Elven: <em>Ľüfinüveen</em>) were raised by Sabowth when he laid claim to the sea. Some call these people Sea Elves because of their shared patronage with Sabowth's other peoples. Much like the Älveen, the Sea People are divided into castes. However, due to the size of the places they cover, the various castes of Sea Peoples are also separated by geography. All Sea Peoples are capable of breathing in both air and water.</p>
+<p><strong>Treitanns</strong>. Treitanns are humanoid, including humanoid faces, with webbed fingers and toes, and fins on their limbs. They occupy the same ruling caste for the Sea Peoples as the High Elves for the Elves. However, their loyalty was split during the Mortal War, and many shifted closer to the apostasy in the end -- it is possible that the Mortal War would not have been won if the Treitanns hadn't taken the seas from the hebdomad.</p>
+<p><strong>Merfolk</strong>. The term merfolk itself is a word from an archaic human language meaning "sea people". The merfolk were the commoner caste of Sea Peoples, everything from merchants, to craftsmen, to the undersea equivalent of farmers. Although still vaguely humanoid, merfolk have fish-like tails instead of legs. Unlike other Sea Peoples, the Merfolk do not travel more than a few feet out of water, as they can not walk on land.</p>
+<p><strong>Sea Goblins</strong>. Despite their name, Sea Goblins are no relation to real Goblins, except that they took a similar position in their society as workers and soldiers. Unlike the other Sea Peoples, Sea Goblins have heads with a similar structure to fish, and some have finned tails. The Sea Goblins have divided into many nations according to what parts of the seas they live in. Some are known to live in coastal communities among other mortals. Others have descended into vast seas in caverns underground.</p>
+<!-- -->
+<h4 id="shirrwern"><a class="header" href="#shirrwern">Shirrwern</a></h4>
+<p>Shirrwen are small, hairy humanoids with pointed, whiskered noses. They are reminiscent of rodents, but closer in appearance to large ground squirrels. Shirrwen are known for their fertility, as given them by their patron Astaffe. But they are also known for their short, but busy lives. Their own cities are made of large underground burrows, or neat wooden huts build on tree branches in forests. During the Mortal War, the Shirrwern at first fought loyally under Astaffe. But as the war progressed Astaffe saw the war more and more as a game, and her soldiers as pawns. Dissent spread among the commanders, the armies stopped fighting, and helped the hero Tijhändreu Mei reach their god.</p>
+<!-- -->
+<!-- -->
+<h3 id="other-mortals"><a class="header" href="#other-mortals">Other Mortals</a></h3>
+<p>There are other mortals on Inannak as well, although they are rare compared to the Liberated Species. Most of these peoples hail from remote islands, hidden valleys, or deep caverns. They may be the result of years of separation from other mortals, or the experiments of lesser deities with thoughts of joining the hebdomad. Many of them occasionally travel among the Liberated Species, where their appearance will generate curiosity. The following are just a few of them.</p>
+<h4 id="dwarves"><a class="header" href="#dwarves">Dwarves</a></h4>
+<p>Dwarves may be related to the ancestors of the Elves, or might be created by some stone elemental deity. These stocky humanoids with skin of stone come from an isolated hive of caverns deep in the underneath. Their hive is known as the source of many valuable minerals which eventually arrive in the markets on the surface. But they only trade with their neighbors underground, so their miners are almost never seen. It is said that Ildabowth came to them long ago to claim them as his own. Their answer was to abandon their homes and move deeper underground, and build barriers and traps to keep the outsiders out. Ildabowth decided they weren't worth it and raised the Gnoles from another mortal people of the underneath.</p>
+<h4 id="fairies"><a class="header" href="#fairies">Fairies</a></h4>
+<p>Fairies are tiny humanoids, no more than six inches high, often with butterfly-like wings. Their origin is unclear, some suggest they are descended from Oneirians and mortals, others that these were mortals who used magic to hide from the titans, and then later the hebdomad. They are found almost all over the world, but prefer to live far from populous areas, hiding their small villages in natural settings: beneath tall grass, among tree tops, or in underground burrows. Magic is taught as part of their way of life, and they use a lot of it to hide and protect themselves from mortals and gods who would do them harm. During the Mortal War, most fairies maintained neutrality to both sides out of fear of notice by one side or the other. But individual fairies were recorded as being helpful against the hebdomad.</p>
+<h4 id="kobolds"><a class="header" href="#kobolds">Kobolds</a></h4>
+<p>These small humanoids are descended from gnomes who rebelled against Sabowth long before the apostasy. They resemble small gnomes with a wizened appearance. The rebels were forced to hide from Sabowth in order to escape, and they found ways to hide in plain sight. In addition to caves and mines, they've also been known to stow away in ships, and hide in hidden places in mortal cities and villages. Kobolds were often forced to steal food to survive, but would pay for that food by completing small household tasks. As they grew bolder from their survival, they began to sabotage places and things important to Sabowth, and later the rest of the hebdomad. They became an important resource for the rebellion during the Mortal War, as they knew how to get into places and where to get information. Since the war, they've begun to emerge from their hiding places, forming small close-knit communities.</p>
+<!-- -->
+<h4 id="dracobolds"><a class="header" href="#dracobolds">Dracobolds</a></h4>
+<p>After the kobold rebellion, a group of the rebels found their way to an island where a dragon lived. The dragon agreed to let them live if they would plead fealty to her. Since then, these kobolds have taken on a reptilian appearance.</p>
+<!-- -->
+<h4 id="anemoi"><a class="header" href="#anemoi">Anemoi</a></h4>
+<p>These winged humanoids make their home on an island in the Southern Hemisphere of Inannak. They have falcon-like heads and wings, and humanoid bodies, including arms. Like the Ildabowth and the Dwarves, it is said that Eow had an interest in the Anemoi as her vassals. However, she would have had to take away their flight, as she felt it wasn't right for a vassal to have such an ability. And even she had a heart moved enough by the beauty of their flight that she let them be as long as they remained on their island. The apostacists have suggested that the Anemoi had made some viable threat when Eow came to them, forcing him to flee their island.</p>
+<!-- -->
+<h4 id="serpentfolk"><a class="header" href="#serpentfolk">Serpentfolk</a></h4>
+<p>The serpentfolk were an experiment that Eow had begun on humans, in secret from Oria. They live on a tropical island, where they worship her in her serpentine form. In return, she granted them features of snakes and special powers. They had found some sort of immortality in that worship, allowing them to be reincarnated. With each reincarnation they became more and more serpentine, with the most powerful becoming large, multi-headed snake-like creature reminiscent of Eow. Eow abandoned them long before the Mortal Wars, but they remained loyal despite this.</p>
+<h4 id="blue-gnomes"><a class="header" href="#blue-gnomes">Blue Gnomes</a></h4>
+<p>Although it's not clear if they are related to real gnomes, the blue gnomes come from an island near the northern arctic. They are similar in size to gnomes, but their skin is bluish. They are hostile to visitors, and will attempt to kill any who land on their island. Still, some have been spotted in other parts of the world, although their purposes there are unclear.</p>
+<!-- -->
+<h4 id="peghroads"><a class="header" href="#peghroads">Peghroads</a></h4>
+<p>Thought to be an early experiment of Ildabowth's, the bog folk live in an around the dismal swamp of Peghro, where Astaffe met her end. The Peghroads are humanoid with mostly bare grey to dark green skin, spotted with red blotches, with thick green hair on their head. Their clawed hands and feet are webbed for better swimming in the swamp. Unlike other humanoids, the peghroads are nocturnal. They are carnivorous, and have been known to hunt other thinking creatures for food or mystical purposes. During Astaffe's last days, she claimed the Peghroads as hers after many of the Shirrwen had abandoned her, and they fought loyally against those who would take her. In the councils and trials that followed the war, calls were made to destroy the Peghroads, but many Shirrwen argued against this, knowing what it was like to be under Astaffe's control.</p>
+<!-- -->
+<h4 id="skulkers"><a class="header" href="#skulkers">Skulkers</a></h4>
+<p>These large humanoids are from the underneath, and were secretly raised by a lesser deity who had a dispute with the hebdomad. They are big and tall, although they walk on their knuckles. Their hair is white or pale brown, although it is common for them to decorate their fur with paints and dyes. Skulker culture is hostile to outsiders and other mortals. Their god raised them in secret as he assembled an army to stake his claim against the hebdomad. The Skulker god was destroyed by Sabowth soon after he sent the Skulkers to invade the caverns of the Deep Elves.</p>
+<!-- -->
+<h4 id="doppelgängers"><a class="header" href="#doppelgängers">Doppelgängers</a></h4>
+<p>In the early days of the Hebdomad, a lesser tromian deity contemplated challenging the hebdomad for rulership over a section of the world. It gathered a number of mortals under its care together and gave them the ability to take the form of almost any other mortal, and the mind powers to back up their mimicry. These doppelgängers were to be the tromian's spies and army. However, the tromian was killed in a dispute with another lesser deity before it could continue its plans. The doppelgängers now survive by hiding amidst other mortal societies. Many continue to worship their god, waiting for it to call upon them to fulfill their task.</p>
+<h3 id="mixed-mortal-lineages"><a class="header" href="#mixed-mortal-lineages">Mixed Mortal Lineages</a></h3>
+<p>Most mortal peoples descend from the same ancestral mortal people, a people who are only described of in the oldest myths. A close examination shows that the boundaries that separate many peoples are not clear. Unions between people of different ancestry are not uncommon. Some of these unions result in children. Many such children are unable to have children of their own, but some continue passing physical traits of their parents onto their own descendants. Thus you will find among the mortals individuals and even families sharing traits of more than one species on occasion.</p>
+<!-- -->
+<h3 id="immortal-lineages"><a class="header" href="#immortal-lineages">Immortal Lineages</a></h3>
+<p>The same biological incompatibilities between mortals are even stronger between them and immortals. However, there are ways that the immortal peoples have been able to introduce some of their features into some mortal populations. There is no doubt that these descendants are still mortal, but their unusual lineage makes them different from the others. In all of these cases, these people have traits that blend into the traits of another mortal people.</p>
+<h4 id="dragonbloods"><a class="header" href="#dragonbloods">Dragonbloods</a></h4>
+<p>Shape changing dragons who live among mortals often form a social attachment with those mortals, and on occasion that can lead to children. The descendants of such a union resemble mortals in most ways, but often have traits that point to their heritage -- patches of scales or feathers, unusual eyes, perhaps a vestigial tail or wings. They often gain limited access to the natural magic of dragons, and on rare occasions, their breath powers.</p>
+<h4 id="daimonbloods"><a class="header" href="#daimonbloods">Daimonbloods</a></h4>
+<p>Daimons, especially deities, have intermixed with mortals throughout the millennia, sometimes through shape changing abilities, sometimes through magical means. The mortal descendants of such a union will have traits that resemble their ancestry: Chthonian ancestry may provide horns or unusual skin, Ouranian ancestry may give them a slight glow, Oneirian ancestry an otherworldly appearance, and so forth.</p>
+<h4 id="saganikin"><a class="header" href="#saganikin">Saganikin</a></h4>
+<p>Although elementals are not biologically compatible with mortals, elementals nobles may have means to grant gifts to mortals that result in inherited traits and abilities. Their descendants will have elemental powers and physical traits reminiscent of their power's origins.</p>
+<h4 id="changelings"><a class="header" href="#changelings">Changelings</a></h4>
+<p>The Oneirian daimons have an unusual practice of replacing mortal children at young ages with their own kind. Both individuals are called changelings. The Oneirian replacement remains an immortal daimon, and will often eventually join their kin in the dream world. But the mortal hostage will often gain unusual traits from their time among the daimons, and although most remain among the Oneirians, some escape or otherwise gain their freedom and attempt to return to mortal socieity.</p>
+<h3 id="magical-transformations"><a class="header" href="#magical-transformations">Magical Transformations</a></h3>
+<p>As magic exists on Inannak, there are the occasional accidents and experiments of wizardry that bring about more unique creatures. Sometimes they're a regular mortal transformed somehow, other times they are created by recipe. None of these creatures occur naturally, they are not born with these characteristics. Not that they couldn't have been transformed at birth, however.</p>
+<h4 id="construct"><a class="header" href="#construct">Construct</a></h4>
+<p>Constructs are machines that have been given a semblance of life by some powerful magic. Most are mindless, and complete their ordered tasks without comment. However, the magics that create them sometimes draw a lesser daimon into the machine, giving it some sort of sapience. Generally, the shock of the transformation removes any memory the daimon had of its previous life. On rare occasions, constructs are made of the corpses of the dead, which gives them the shadow of undeath.</p>
+<h4 id="werecreatures"><a class="header" href="#werecreatures">Werecreatures</a></h4>
+<p>Therianthropy is a disease said to have been created by Oria as a way to improve her hunters. The disease allows its mortal victims to transform into one of a number of beasts. Once the disease fully takes hold, the transformation is involuntary, occurring during the period of the full moon of Oria. Victims also lose their abilities to reason and quickly become angry and violent. Only victims who have lived with the disease for a long time are able to develop coping mechanisms that allow them to control the transformation and their emotions. Therianthropy is not hereditary, although it can be transferred in the womb. Different strains of therianthropy cause transformations into different beasts: wolves, bears, tigers, cats and rats are most well known.</p>
+<h4 id="metamorphosed"><a class="header" href="#metamorphosed">Metamorphosed</a></h4>
+<p>Occasionally, a mortal will be magically transformed into another shape, or an animal or plant will be transformed into a mortal.</p>
+<h3 id="alien-peoples"><a class="header" href="#alien-peoples">Alien Peoples</a></h3>
+<p>The world of Inannak is sealed off from other multiverses. However, it is a universe, and there are other worlds than the land, sea and Underneath of Inannak. Occasionally, intelligent people from the stars or beyond appear on Inannak. Such mortals have no memory of their past, or at least no knowledge that will disrupt the history of the world. This may be the work of some unknown god, or a curse laid by the hebdomad.</p>
+<!-- -->
+<p>There are not enough of a population of most of these alien mortals to discuss them in depth. The chance is low of two such creatures finding themselves at the same time and place on Inannak, so families and villages of these creatures are not heard of. But if there is a people that you wish to use in your own journeys through this world, and it doesn't seem to fit with the rest, you may add it as an alien. Keep in mind the required amnesia, and the potential culture shock when interacting with other mortals. That shock which may not be as powerful as you'd think considering the diversity of life already found on Inannak.</p>
+<p>There are two notable groups of alien peoples that should be mentioned.</p>
+<h4 id="strangers"><a class="header" href="#strangers">Strangers</a></h4>
+<p>Sometimes, people of Inannak may use the term "Stranger" with an almost audible capital 'S'. This term refers to a type of alien creature which is not originally native to Inannak, but which has established a small presence here. Most of these peoples come from places beyond the stars, worlds which do not have suns, and thus they prefer to live in the Underneath, or in the ocean. Some of them may have Tromian ancestry. Notable Strangers of Inannak include the legendary Eye Beasts, the Horrors of the Depths, and the Thought Slicers. Some of these peoples are as long-lived and powerful as dragons, and might fit better into the immortal category.</p>
+<h4 id="strangelings"><a class="header" href="#strangelings">Strangelings</a></h4>
+<p>Strangers can not breed with other mortals, and rarely have any reason to try. However, mortals may be changed by their experiences with them. For example: slaves of Thought Slicers and Eye Lords change over generations. Their descendants, if they gain their freedom, may develop unusual physical traits such as tentacles, or psychic abilities gained from defending their thoughts against their masters' abuses. Strangelings might also be descendants of mortals that have been removed from the physical world and survived for several generations in other worlds.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="cosmology.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="magic.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="cosmology.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="magic.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="theme/pagetoc.js"></script>
+
+
+
+    </div>
+    </body>
+</html>

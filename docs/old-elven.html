@@ -1,0 +1,1467 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Old Elven - The World of Inannak</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="theme/custom.css">
+        <link rel="stylesheet" href="theme/pagetoc.css">
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">The World of Inannak</h1>
+
+                    <div class="right-buttons">
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="old-elven"><a class="header" href="#old-elven">Old Elven</a></h1>
+<!-- -->
+<p><span class="chapter-flourish">Old Elven</span> (älveen /ælʲβʲe̞ːnʲ/) is a classical language originally spoken in the ancient Elven Dominion, and is used as a literary, scriptural or legal language in some lands. It is the proto-language for numerous modern Elven and Goblin dialects.</p>
+<!-- -->
+<p>The language is an aggultinative and synthetic language. Combinations of prefixes and suffixes are added to roots to form words. In Old Elven, each change in category such as gender, person, number, or tense is handled by a different affix, whereas in an inflective language, which the reader may be more famliar with, a single affix might be used to indicate a single combination of all of those.</p>
+<p>Word order in Old Elven is generally subject-object-verb, and adjectives come after nouns. The language recognizes makes use of four genders: female, male, animate neutral and inanimate neutral.</p>
+<blockquote>
+<h5 id="note"><a class="header" href="#note">NOTE</a></h5>
+<p>Old Elven is described here for use in building single words such as proper nouns for personal use. It is not intended to be a spoken or literary language, and thus the grammar is not described.</p>
+</blockquote>
+<h2 id="phonology"><a class="header" href="#phonology">Phonology</a></h2>
+<p>Stress is always on the second to last syllable of the word.</p>
+<h3 id="consonants"><a class="header" href="#consonants">Consonants</a></h3>
+<p>In addition to typical classifications, Old Elven has a broad and slender contrast to most consonants. A broad consonant is generally velarized and labialized if the consonant isn't already labial, before a front vowel. Velarized means that the back of the tongue is raised during pronunciation. This results in a slight 'w' sound as the consonant ends. Similarly, a slender consonant is generally palatialized before a back vowel, resulting in a slight 'y' sound. <!-- --></p>
+<p>In the Old Elven Consonants table below, when two consonants appear, the first is unvoiced and the second voiced.</p>
+<!-- -->
+<table class="elbie phonemes">
+ <caption>
+Consonants (unvoiced ~ voiced) </caption>
+ <thead>
+  <tr class="column-head">
+   <th>
+   </th>
+   <th class="column-header" colspan=2>
+Labial   </th>
+   <th class="column-header" colspan=2>
+Coronal   </th>
+   <th class="column-header" colspan=2>
+Dorsal   </th>
+   <th class="column-header" colspan=2>
+Glottal   </th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr class="body-row">
+   <th class="row-header">
+Plosive Broad   </th>
+   <td class="column-group-start">
+/pˠ/   </td>
+   <td class="column-group-end">
+/bˠ/   </td>
+   <td class="column-group-start">
+/t̪ˠ/   </td>
+   <td class="column-group-end">
+/d̪ˠ/   </td>
+   <td class="column-group-start">
+/k/   </td>
+   <td class="column-group-end">
+/ɡ/   </td>
+   <td class="column-group-start">
+   </td>
+   <td class="column-group-end">
+   </td>
+  </tr>
+  <tr class="body-row">
+   <th class="row-header">
+Plosive Slender   </th>
+   <td class="column-group-start">
+/pʲ/   </td>
+   <td class="column-group-end">
+/bʲ/   </td>
+   <td class="column-group-start">
+   </td>
+   <td class="column-group-end">
+   </td>
+   <td class="column-group-start">
+/c/   </td>
+   <td class="column-group-end">
+/ɟ/   </td>
+   <td class="column-group-start">
+   </td>
+   <td class="column-group-end">
+   </td>
+  </tr>
+  <tr class="body-row">
+   <th class="row-header">
+Affricate   </th>
+   <td class="column-group-start">
+   </td>
+   <td class="column-group-end">
+   </td>
+   <td class="column-group-start">
+/tɕ/   </td>
+   <td class="column-group-end">
+/dʑ/   </td>
+   <td class="column-group-start">
+   </td>
+   <td class="column-group-end">
+   </td>
+   <td class="column-group-start">
+   </td>
+   <td class="column-group-end">
+   </td>
+  </tr>
+  <tr class="body-row">
+   <th class="row-header">
+Fricative Broad   </th>
+   <td class="column-group-start">
+/ɸˠ/   </td>
+   <td class="column-group-end">
+/βˠ/   </td>
+   <td class="column-group-start">
+/sˠ/   </td>
+   <td class="column-group-end">
+   </td>
+   <td class="column-group-start">
+/x/   </td>
+   <td class="column-group-end">
+/ɣ/   </td>
+   <td class="column-group-start">
+   </td>
+   <td class="column-group-end">
+   </td>
+  </tr>
+  <tr class="body-row">
+   <th class="row-header">
+Fricative Slender   </th>
+   <td class="column-group-start">
+/ɸʲ/   </td>
+   <td class="column-group-end">
+/βʲ/   </td>
+   <td class="column-group-start">
+/ʃ/   </td>
+   <td class="column-group-end">
+   </td>
+   <td class="column-group-start">
+/ç/   </td>
+   <td class="column-group-end">
+   </td>
+   <td class="column-group-start">
+   </td>
+   <td class="column-group-end">
+   </td>
+  </tr>
+  <tr class="body-row">
+   <th class="row-header">
+Fricative Glottal   </th>
+   <td class="column-group-start">
+   </td>
+   <td class="column-group-end">
+   </td>
+   <td class="column-group-start">
+   </td>
+   <td class="column-group-end">
+   </td>
+   <td class="column-group-start">
+   </td>
+   <td class="column-group-end">
+   </td>
+   <td class="column-group-start">
+/h/   </td>
+   <td class="column-group-end">
+   </td>
+  </tr>
+  <tr class="body-row">
+   <th class="row-header">
+Approximant   </th>
+   <td class="column-group-start">
+   </td>
+   <td class="column-group-end">
+   </td>
+   <td class="column-group-start">
+   </td>
+   <td class="column-group-end">
+   </td>
+   <td class="column-group-start">
+   </td>
+   <td class="column-group-end">
+/j/   </td>
+   <td class="column-group-start">
+   </td>
+   <td class="column-group-end">
+   </td>
+  </tr>
+  <tr class="body-row">
+   <th class="row-header">
+Nasal Broad   </th>
+   <td class="column-group-start">
+   </td>
+   <td class="column-group-end">
+/mˠ/   </td>
+   <td class="column-group-start">
+   </td>
+   <td class="column-group-end">
+/n̪ˠ/   </td>
+   <td class="column-group-start">
+   </td>
+   <td class="column-group-end">
+/ŋ/   </td>
+   <td class="column-group-start">
+   </td>
+   <td class="column-group-end">
+   </td>
+  </tr>
+  <tr class="body-row">
+   <th class="row-header">
+Nasal Slender   </th>
+   <td class="column-group-start">
+   </td>
+   <td class="column-group-end">
+/mʲ/   </td>
+   <td class="column-group-start">
+   </td>
+   <td class="column-group-end">
+/nʲ/   </td>
+   <td class="column-group-start">
+   </td>
+   <td class="column-group-end">
+/ɲ/   </td>
+   <td class="column-group-start">
+   </td>
+   <td class="column-group-end">
+   </td>
+  </tr>
+  <tr class="body-row">
+   <th class="row-header">
+Trill Broad   </th>
+   <td class="column-group-start">
+   </td>
+   <td class="column-group-end">
+   </td>
+   <td class="column-group-start">
+   </td>
+   <td class="column-group-end">
+/rˠ/   </td>
+   <td class="column-group-start">
+   </td>
+   <td class="column-group-end">
+   </td>
+   <td class="column-group-start">
+   </td>
+   <td class="column-group-end">
+   </td>
+  </tr>
+  <tr class="body-row">
+   <th class="row-header">
+Trill Slender   </th>
+   <td class="column-group-start">
+   </td>
+   <td class="column-group-end">
+   </td>
+   <td class="column-group-start">
+   </td>
+   <td class="column-group-end">
+/rʲ/   </td>
+   <td class="column-group-start">
+   </td>
+   <td class="column-group-end">
+   </td>
+   <td class="column-group-start">
+   </td>
+   <td class="column-group-end">
+   </td>
+  </tr>
+  <tr class="body-row">
+   <th class="row-header">
+Lateral Fricative   </th>
+   <td class="column-group-start">
+   </td>
+   <td class="column-group-end">
+   </td>
+   <td class="column-group-start">
+/ɫ̪/   </td>
+   <td class="column-group-end">
+   </td>
+   <td class="column-group-start">
+   </td>
+   <td class="column-group-end">
+   </td>
+   <td class="column-group-start">
+   </td>
+   <td class="column-group-end">
+   </td>
+  </tr>
+  <tr class="body-row">
+   <th class="row-header">
+Lateral Approximant   </th>
+   <td class="column-group-start">
+   </td>
+   <td class="column-group-end">
+   </td>
+   <td class="column-group-start">
+   </td>
+   <td class="column-group-end">
+/lʲ/   </td>
+   <td class="column-group-start">
+   </td>
+   <td class="column-group-end">
+   </td>
+   <td class="column-group-start">
+   </td>
+   <td class="column-group-end">
+   </td>
+  </tr>
+ </tbody>
+</table>
+<p>Voiceless stops are generally aspirated, unless they occur after a fricative or at the end of a word. The labial fricatives are bilabial, not labiodental. The coronal stops and the broad nasal are dental, not alveolar.</p>
+<p>The slender equivalent to the coronal stops (/t̪ˠ/ and /d̪ˠ/) are affricates (/tɕ/ and /dʑ/), just as the slender version of the voiceless coronal fricative is a palatal fricative /ʃ/. In a related shift, the dorsal voice fricative becomes the approximant /j/. However, the /j/ has an allophone of  /ʝ/ (voiced /ç/) at the end of a syllable when not word-final. Using a similar pattern, the dorsal consonants are not velarized or palatalized, but the consonants shift position towards velar or palatal instead. The glottal consonant does not have a broad or slender form. The broad /l/ is a voiceless lateral fricative.</p>
+<p>The trills /rˠ/ and /rʲ/ are pronounced as taps /ɾˠ/ and /ɾʲ/ when that phoneme appears in the middle of a word adjacent to vowels on either side, or when they appear at the end of a word immediately after a vowel.</p>
+<h3 id="vowels"><a class="header" href="#vowels">Vowels</a></h3>
+<p>Where two vowels appear in the Old Elven Vowels table below, they represent an unrounded and rounded pair, respectively. The back vowels except for /ɑ/ are rounded.<!-- --></p>
+<p><strong>Vowel Harmony</strong>. Old Elven has a feature called 'vowel harmony', in which the vowels in a word must be related. When words are compounded or derived, the vowels of connected words are often changed to match the harmony of the other words. This is usually the main word in derivational suffixes, but can be either in a compound word. More information on this is described in <a href="./phonotactics.html">phonotactics</a>.</p>
+<p>The table columns separate vowels by harmony instead of backness. Any and fore harmony vowels are all front vowels, and back harmony vowels are back vowels.</p>
+<!-- -->
+<table class="elbie phonemes">
+ <caption>
+Vowels (unrounded single ~ unrounded double ~ rounded single ~ rounded double) </caption>
+ <thead>
+  <tr class="column-head">
+   <th>
+   </th>
+   <th class="column-header" colspan=2>
+Any Harmony   </th>
+   <th class="column-header" colspan=2>
+Fore Harmony   </th>
+   <th class="column-header" colspan=2>
+Back Harmony   </th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr class="body-row">
+   <th class="row-header">
+Close   </th>
+   <td class="column-group-start">
+/i/ /iː/   </td>
+   <td class="column-group-end">
+   </td>
+   <td class="column-group-start">
+   </td>
+   <td class="column-group-end">
+/y/ /yː/   </td>
+   <td class="column-group-start">
+   </td>
+   <td class="column-group-end">
+/u/ /uː/   </td>
+  </tr>
+  <tr class="body-row">
+   <th class="row-header">
+Mid   </th>
+   <td class="column-group-start">
+/e̞/ /e̞ː/   </td>
+   <td class="column-group-end">
+   </td>
+   <td class="column-group-start">
+   </td>
+   <td class="column-group-end">
+/ø̞/ /ø̞ː/   </td>
+   <td class="column-group-start">
+   </td>
+   <td class="column-group-end">
+/o̞/ /o̞ː/   </td>
+  </tr>
+  <tr class="body-row">
+   <th class="row-header">
+Open   </th>
+   <td class="column-group-start">
+   </td>
+   <td class="column-group-end">
+   </td>
+   <td class="column-group-start">
+/æ/ /æː/   </td>
+   <td class="column-group-end">
+   </td>
+   <td class="column-group-start">
+/ɑ/ /ɑː/   </td>
+   <td class="column-group-end">
+   </td>
+  </tr>
+ </tbody>
+</table>
+<p><strong>Length</strong>. Old Elven also contrasts vowels by length. Long vowels are about double in length, and are continuous sounds.</p>
+<p><strong>Diphthongs</strong>. The Old Elven Dipthongs table shows dipthongs that appear. Most dipthongs rise to close vowles, but there are three exceptions which are a close vowel falling to a different mid vowel.</p>
+<!-- -->
+<table class="elbie phonemes">
+ <caption>
+Diphthongs </caption>
+ <thead>
+  <tr class="column-head">
+   <th>
+   </th>
+   <th class="column-header">
+Any Harmony   </th>
+   <th class="column-header">
+Fore Harmony   </th>
+   <th class="column-header">
+Back Harmony   </th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr class="body-row">
+   <th class="row-header">
+Rising to /i/   </th>
+   <td>
+/ei̯/   </td>
+   <td>
+/yi̯/ /æi̯/ /øi̯/   </td>
+   <td>
+/oi̯/ /ui̯/ /ɑi̯/   </td>
+  </tr>
+  <tr class="body-row">
+   <th class="row-header">
+Rising to /y/   </th>
+   <td>
+/ey̯/ /iy̯/   </td>
+   <td>
+/æy̯/ /øy̯/   </td>
+   <td>
+   </td>
+  </tr>
+  <tr class="body-row">
+   <th class="row-header">
+Rising to /u/   </th>
+   <td>
+/eu̯/ /iu̯/   </td>
+   <td>
+   </td>
+   <td>
+/ou̯/ /ɑu̯/   </td>
+  </tr>
+  <tr class="body-row">
+   <th class="row-header">
+Falling   </th>
+   <td>
+/ie̯/   </td>
+   <td>
+/yø̯/   </td>
+   <td>
+/uo̯/   </td>
+  </tr>
+ </tbody>
+</table>
+<h3 id="phonotactics"><a class="header" href="#phonotactics">Phonotactics</a></h3>
+<p>The syllable structure follows the form (C(L))V(C). The following rules define how sounds can be placed together in words. An onset is a series of consonants that begin a syllable. A coda is a series of consonants that end a syllable. The rules define how words are built, including affixes. They do apply over compound words and in derivitional affixes. The speaker may insert a glottal stop or other vowel in boundaries inside compound words to make them easier to pronounce.</p>
+<ol>
+<li>The first syllable in a word may start with any vowel, or an onset that starts with any consonant except voiced coronal plosive or nasal (/d̪ˠ/, /dʑ/, /ŋ/, or /ɲ/).</li>
+<li>If an onset ends with an obstruent (plosive, non-lateral fricative or affricate), that phoneme may be followed by a liquid (lateral or trill) that matches the previous consonant's slender or broad category, or any vowel.</li>
+<li>If an onset ends with a non-obstruent, that phoneme <em>must</em> be followed by any vowel.</li>
+<li><strong>Vowel Harmony</strong>: A word with multiple syllables must have harmonious vowels. When diphthongs appear, the harmoy applies to the first vowel.
+<ol>
+<li>If the vowels /y/, /ø̞/ or /æ/ appear in a syllable, then all remaining syllables may only have the vowels /y/, /ø̞/ /æ/, /i/ or /e/.</li>
+<li>If the vowels /u/, /o/, or /a/ appear in a syllable, then all remaining syllables may only have the vowels /u/, /o/, /a/, /i/ or /e/.</li>
+<li>If the vowels /i/ or /e/ appear in a syllable, any vowel may appear in following syllables.</li>
+</ol>
+</li>
+<li>A vowel may end a word.</li>
+<li>A single vowel may be followed by a coda with any consonant or an onset with any consonant. <em>This is not a real phonotactic rule. It emerges from a rule which requires that two vowels next to each other become a diphthong.</em></li>
+<li>A double or diphthong vowel may be followed by another vowel, a coda with any consonant, or an onset with any consonant.</li>
+<li>A coda with a coronal consonant (/t̪ˠ/, /tɕ/, /d̪ˠ/, /dʑ/, /sˠ/, /ʃ/, /n̪ˠ/, /nʲ/, /rˠ/, /rʲ/, /ɫ̪/, or /lʲ/) may end a word.</li>
+<li>If a vowel or coda may not end a word, it must be followed by another syllable.</li>
+<li>If a syllable ends with a plosive, it may be followed by an onset with a plosive in the same place of articulation, a non-lateral fricative, a non-lateral  approximant, a liquid, or a vowel.</li>
+<li>If a syllable ends with a non-lateral fricative or affricate, it may be followed by an onset with any consonant or vowel.</li>
+<li>If a syllable ends with a nasal, it may be followed by an onset with an obstruent or non-lateral approximant of the same place of articulation, or a vowel.</li>
+<li>If a syllable ends with a liquid, it may be followed by an onset with an obstruent, non-lateral approximant, a nasal, or a vowel.</li>
+</ol>
+<h2 id="orthography"><a class="header" href="#orthography">Orthography</a></h2>
+<p>Old Elven is written in a logo-syllabic script which has almost 1,000 signs. It would not be at all practical to try to replicate it here. Instead, I am providing a way to transcribe the phonemes into latin letters. This transcription makes use of diacritics (marks above or below the letters), which has the added bonus of giving the script a more unfamiliar appearance (at least for English readers).</p>
+<p>A second transcription is supplied for more informal text. This transcription removes diacritics where the difference in sound is indistinguishable in English. In other cases, it uses digraphs to indicate sounds that English speakers can differentiate. This informal transcription is easier to type on a US English keyboard, but may not provide accurate pronunciation.</p>
+<!-- -->
+<table class="elbie orthography">
+ <caption>
+Spelling for old elven </caption>
+ <thead>
+  <tr class="column-head">
+   <th class="column-header">
+Phoneme   </th>
+   <th class="column-header">
+Formal   </th>
+   <th class="column-header">
+Informal   </th>
+   <th class="column-header">
+Phoneme   </th>
+   <th class="column-header">
+Formal   </th>
+   <th class="column-header">
+Informal   </th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr class="body-row">
+   <td>
+/bʲ/   </td>
+   <td>
+ḅ   </td>
+   <td>
+b   </td>
+   <td>
+/u/   </td>
+   <td>
+u   </td>
+   <td>
+u   </td>
+  </tr>
+  <tr class="body-row">
+   <td>
+/bˠ/   </td>
+   <td>
+b   </td>
+   <td>
+b   </td>
+   <td>
+/ui̯/   </td>
+   <td>
+uį   </td>
+   <td>
+ui   </td>
+  </tr>
+  <tr class="body-row">
+   <td>
+/c/   </td>
+   <td>
+č   </td>
+   <td>
+g   </td>
+   <td>
+/uo̯/   </td>
+   <td>
+uǫ   </td>
+   <td>
+uo   </td>
+  </tr>
+  <tr class="body-row">
+   <td>
+/dʑ/   </td>
+   <td>
+ď   </td>
+   <td>
+jh   </td>
+   <td>
+/uː/   </td>
+   <td>
+ū   </td>
+   <td>
+uu   </td>
+  </tr>
+  <tr class="body-row">
+   <td>
+/d̪ˠ/   </td>
+   <td>
+d   </td>
+   <td>
+d   </td>
+   <td>
+/x/   </td>
+   <td>
+x   </td>
+   <td>
+hh   </td>
+  </tr>
+  <tr class="body-row">
+   <td>
+/ei̯/   </td>
+   <td>
+eį   </td>
+   <td>
+ei   </td>
+   <td>
+/y/   </td>
+   <td>
+ü   </td>
+   <td>
+ü   </td>
+  </tr>
+  <tr class="body-row">
+   <td>
+/eu̯/   </td>
+   <td>
+eų   </td>
+   <td>
+eu   </td>
+   <td>
+/yi̯/   </td>
+   <td>
+üį   </td>
+   <td>
+üi   </td>
+  </tr>
+  <tr class="body-row">
+   <td>
+/ey̯/   </td>
+   <td>
+eų̈    </td>
+   <td>
+eü   </td>
+   <td>
+/yø̯/   </td>
+   <td>
+üǫ̈    </td>
+   <td>
+üö   </td>
+  </tr>
+  <tr class="body-row">
+   <td>
+/e̞/   </td>
+   <td>
+e   </td>
+   <td>
+e   </td>
+   <td>
+/yː/   </td>
+   <td>
+ǖ   </td>
+   <td>
+üü   </td>
+  </tr>
+  <tr class="body-row">
+   <td>
+/e̞ː/   </td>
+   <td>
+ē   </td>
+   <td>
+ee   </td>
+   <td>
+/æ/   </td>
+   <td>
+ä   </td>
+   <td>
+ä   </td>
+  </tr>
+  <tr class="body-row">
+   <td>
+/h/   </td>
+   <td>
+h   </td>
+   <td>
+h   </td>
+   <td>
+/æi̯/   </td>
+   <td>
+äį   </td>
+   <td>
+äi   </td>
+  </tr>
+  <tr class="body-row">
+   <td>
+/i/   </td>
+   <td>
+i   </td>
+   <td>
+i   </td>
+   <td>
+/æy̯/   </td>
+   <td>
+äų̈    </td>
+   <td>
+äü   </td>
+  </tr>
+  <tr class="body-row">
+   <td>
+/ie̯/   </td>
+   <td>
+ię   </td>
+   <td>
+ie   </td>
+   <td>
+/æː/   </td>
+   <td>
+ǟ   </td>
+   <td>
+ää   </td>
+  </tr>
+  <tr class="body-row">
+   <td>
+/iu̯/   </td>
+   <td>
+ių   </td>
+   <td>
+iu   </td>
+   <td>
+/ç/   </td>
+   <td>
+x̌   </td>
+   <td>
+hh   </td>
+  </tr>
+  <tr class="body-row">
+   <td>
+/iy̯/   </td>
+   <td>
+ių̈    </td>
+   <td>
+iü   </td>
+   <td>
+/øi̯/   </td>
+   <td>
+öį   </td>
+   <td>
+öi   </td>
+  </tr>
+  <tr class="body-row">
+   <td>
+/iː/   </td>
+   <td>
+ī   </td>
+   <td>
+ii   </td>
+   <td>
+/øy̯/   </td>
+   <td>
+öų̈    </td>
+   <td>
+öü   </td>
+  </tr>
+  <tr class="body-row">
+   <td>
+/j/   </td>
+   <td>
+j   </td>
+   <td>
+j   </td>
+   <td>
+/ø̞/   </td>
+   <td>
+ö   </td>
+   <td>
+ö   </td>
+  </tr>
+  <tr class="body-row">
+   <td>
+/k/   </td>
+   <td>
+c   </td>
+   <td>
+c   </td>
+   <td>
+/ø̞ː/   </td>
+   <td>
+ȫ   </td>
+   <td>
+öö   </td>
+  </tr>
+  <tr class="body-row">
+   <td>
+/lʲ/   </td>
+   <td>
+l   </td>
+   <td>
+l   </td>
+   <td>
+/ŋ/   </td>
+   <td>
+ŋ   </td>
+   <td>
+ng   </td>
+  </tr>
+  <tr class="body-row">
+   <td>
+/mʲ/   </td>
+   <td>
+ṃ   </td>
+   <td>
+m   </td>
+   <td>
+/ɑ/   </td>
+   <td>
+a   </td>
+   <td>
+a   </td>
+  </tr>
+  <tr class="body-row">
+   <td>
+/mˠ/   </td>
+   <td>
+m   </td>
+   <td>
+m   </td>
+   <td>
+/ɑi̯/   </td>
+   <td>
+aį   </td>
+   <td>
+ai   </td>
+  </tr>
+  <tr class="body-row">
+   <td>
+/nʲ/   </td>
+   <td>
+ṇ   </td>
+   <td>
+n   </td>
+   <td>
+/ɑu̯/   </td>
+   <td>
+aų   </td>
+   <td>
+au   </td>
+  </tr>
+  <tr class="body-row">
+   <td>
+/n̪ˠ/   </td>
+   <td>
+n   </td>
+   <td>
+n   </td>
+   <td>
+/ɑː/   </td>
+   <td>
+ā   </td>
+   <td>
+aa   </td>
+  </tr>
+  <tr class="body-row">
+   <td>
+/oi̯/   </td>
+   <td>
+oį   </td>
+   <td>
+oi   </td>
+   <td>
+/ɟ/   </td>
+   <td>
+ǧ   </td>
+   <td>
+g   </td>
+  </tr>
+  <tr class="body-row">
+   <td>
+/ou̯/   </td>
+   <td>
+oų   </td>
+   <td>
+ou   </td>
+   <td>
+/ɡ/   </td>
+   <td>
+g   </td>
+   <td>
+g   </td>
+  </tr>
+  <tr class="body-row">
+   <td>
+/o̞/   </td>
+   <td>
+o   </td>
+   <td>
+o   </td>
+   <td>
+/ɣ/   </td>
+   <td>
+x̨   </td>
+   <td>
+gh   </td>
+  </tr>
+  <tr class="body-row">
+   <td>
+/o̞ː/   </td>
+   <td>
+ō   </td>
+   <td>
+oo   </td>
+   <td>
+/ɫ̪/   </td>
+   <td>
+ł   </td>
+   <td>
+lh   </td>
+  </tr>
+  <tr class="body-row">
+   <td>
+/pʲ/   </td>
+   <td>
+p̣   </td>
+   <td>
+p   </td>
+   <td>
+/ɲ/   </td>
+   <td>
+ŋ̌   </td>
+   <td>
+ng   </td>
+  </tr>
+  <tr class="body-row">
+   <td>
+/pˠ/   </td>
+   <td>
+p   </td>
+   <td>
+p   </td>
+   <td>
+/ɸʲ/   </td>
+   <td>
+f̣   </td>
+   <td>
+f   </td>
+  </tr>
+  <tr class="body-row">
+   <td>
+/rʲ/   </td>
+   <td>
+ṛ   </td>
+   <td>
+r   </td>
+   <td>
+/ɸˠ/   </td>
+   <td>
+f   </td>
+   <td>
+f   </td>
+  </tr>
+  <tr class="body-row">
+   <td>
+/rˠ/   </td>
+   <td>
+r   </td>
+   <td>
+r   </td>
+   <td>
+/ʃ/   </td>
+   <td>
+š   </td>
+   <td>
+sh   </td>
+  </tr>
+  <tr class="body-row">
+   <td>
+/sˠ/   </td>
+   <td>
+s   </td>
+   <td>
+s   </td>
+   <td>
+/βʲ/   </td>
+   <td>
+ṿ   </td>
+   <td>
+v   </td>
+  </tr>
+  <tr class="body-row">
+   <td>
+/tɕ/   </td>
+   <td>
+ť   </td>
+   <td>
+ch   </td>
+   <td>
+/βˠ/   </td>
+   <td>
+v   </td>
+   <td>
+v   </td>
+  </tr>
+  <tr class="body-row">
+   <td>
+/t̪ˠ/   </td>
+   <td>
+t   </td>
+   <td>
+t   </td>
+   <td>
+   </td>
+   <td>
+   </td>
+   <td>
+   </td>
+  </tr>
+ </tbody>
+</table>
+<h2 id="lexicon"><a class="header" href="#lexicon">Lexicon</a></h2>
+<p>The following is a lexicon of common Old Elven words and their English translations. The words are divided up into groups of words, such as proper names, numbers, pronouns, etc.% Most of the original words come from the 207-word Swadesh list combined with words from the list used on RollForFantasy's language generator, which was not used in the creation of this language or the words below.</p>
+<h3 id="proper-names"><a class="header" href="#proper-names">Proper Names</a></h3>
+<!-- -->
+<p><strong>ailhein</strong>. (/ɑi̯ɫ̪ei̯nʲ/; Formal: <em>aįłeįṇ</em>): lesser moon (Eilwain)</p>
+<p><strong>älveen</strong>. (/ælʲβʲe̞ːnʲ/; Formal: <em>älṿēṇ</em>): Old Elven language, the Elven peoples as a whole, unknown etymology</p>
+<p><strong>älveiün</strong>. (/ælʲβʲei̯ynʲ/; Formal: <em>älṿeįüṇ</em>): council elf caste (possibly from iyci "to say")</p>
+<p><strong>älvepähüülhän</strong>. (/ælʲβʲe̞pˠæhyːɫ̪ænʲ/; Formal: <em>älṿepähǖłäṇ</em>): high elf cast (from pähüülhä "they know", see English noble)</p>
+<p><strong>älveshüchiin</strong>. (/ælʲβʲe̞ʃytɕiːnʲ/; Formal: <em>älṿešüťīṇ</em>): wood elf caste (from shuchii "forest")</p>
+<p><strong>ästäffe</strong>. (/æsˠt̪ˠæɸʲɸʲe̞/; Formal: <em>ästäf̣f̣e</em>): first planet  (Astaffe)</p>
+<p><strong>behiimat</strong>. (/bʲe̞hiːmˠɑt̪ˠ/; Formal: <em>ḅehīmat</em>): a mythological dragon</p>
+<p><strong>böighbärän</strong>. (/bˠøi̯ɣbˠærˠænʲ/; Formal: <em>böįx̨bäräṇ</em>): bugbear caste (first part possibly from böi "two" and ghä "three" )</p>
+<p><strong>chaamat</strong>. (/tɕɑːmˠɑt̪ˠ/; Formal: <em>ťāmat</em>): a mythological dragon</p>
+<p><strong>ejau</strong>. (/e̞jɑu̯/; Formal: <em>ejaų</em>): third planet  (Eow)</p>
+<p><strong>fiirbölghön</strong>. (/ɸˠiːrˠbˠø̞lʲɣø̞nʲ/; Formal: <em>fīrbölx̨öṇ</em>): firbolg caste</p>
+<p><strong>ghöbleen</strong>. (/ɣø̞bˠlʲe̞ːnʲ/; Formal: <em>x̨öblēṇ</em>): goblin caste</p>
+<p><strong>hhöghöbleen</strong>. (/çø̞ɣø̞bˠlʲe̞ːnʲ/; Formal: <em>x̌öx̨öblēṇ</em>): hobgoblin caste (from \ipaq{çø̞} "six")</p>
+<p><strong>ildabaut</strong>. (/ilʲd̪ˠɑbˠɑu̯t̪ˠ/; Formal: <em>ildabaųt</em>): fourth planet (Ildabouth)</p>
+<p><strong>lüfinüveen</strong>. (/lʲyɸʲin̪ˠyβʲe̞ːnʲ/; Formal: <em>lüf̣inüṿēṇ</em>): Sea peoples</p>
+<p><strong>ngomeen</strong>. (/ŋo̞mʲe̞ːnʲ/; Formal: <em>ŋoṃēṇ</em>): gnome caste</p>
+<p><strong>öijhärüün</strong>. (/øi̯dʑærʲyːnʲ/; Formal: <em>öįďäṛǖṇ</em>): deep elf caste</p>
+<p><strong>ora</strong>. (/o̞rʲɑ/; Formal: <em>oṛa</em>): greater moon  (Oria)</p>
+<p><strong>sabaut</strong>. (/sˠɑbˠɑu̯t̪ˠ/; Formal: <em>sabaųt</em>): second planet (Sabouth)</p>
+<p><strong>siisat</strong>. (/sˠiːsˠɑt̪ˠ/; Formal: <em>sīsat</em>): a mythological dragon</p>
+<h3 id="pronouns"><a class="header" href="#pronouns">Pronouns</a></h3>
+<!-- -->
+<p><strong>lu</strong>. (/lʲu/; Formal: <em>lu</em>): I</p>
+<p><strong>to</strong>. (/t̪ˠo̞/; Formal: <em>to</em>): you (singular)</p>
+<p><strong>fä</strong>. (/ɸˠæ/; Formal: <em>fä</em>): he</p>
+<p><strong>lä</strong>. (/lʲæ/; Formal: <em>lä</em>): she</p>
+<p><strong>tä</strong>. (/t̪ˠæ/; Formal: <em>tä</em>): they (singular personal)</p>
+<p><strong>emä</strong>. (/e̞mˠæ/; Formal: <em>emä</em>): it (impersonal)</p>
+<p><strong>irbü</strong>. (/irʲbˠy/; Formal: <em>iṛbü</em>): we</p>
+<p><strong>ügö</strong>. (/yɟø̞/; Formal: <em>üǧö</em>): you (plural)</p>
+<p><strong>eülhä</strong>. (/ey̯ɫ̪æ/; Formal: <em>eų̈ łä</em>): they</p>
+<p><strong>iüpemä</strong>. (/iy̯pˠe̞mˠæ/; Formal: <em>ių̈ pemä</em>): this</p>
+<p><strong>iümbimä</strong>. (/iy̯mʲbˠimˠæ/; Formal: <em>ių̈ ṃbimä</em>): that</p>
+<p><strong>iüpe</strong>. (/iy̯pˠe̞/; Formal: <em>ių̈ pe</em>): here</p>
+<p><strong>iümbi</strong>. (/iy̯mʲbˠi/; Formal: <em>ių̈ ṃbi</em>): there</p>
+<p><strong>shrä</strong>. (/ʃrʲæ/; Formal: <em>šṛä</em>): who</p>
+<p><strong>shroma</strong>. (/ʃrʲo̞mˠɑ/; Formal: <em>šṛoma</em>): what</p>
+<p><strong>shrombi</strong>. (/ʃrʲo̞mˠbˠi/; Formal: <em>šṛombi</em>): where</p>
+<p><strong>shroje</strong>. (/ʃrʲo̞je̞/; Formal: <em>šṛoje</em>): when</p>
+<p><strong>shrocri</strong>. (/ʃrʲo̞krˠi/; Formal: <em>šṛocri</em>): how</p>
+<p><strong>uidii</strong>. (/ui̯d̪ˠiː/; Formal: <em>uįdī</em>): all</p>
+<p><strong>chii</strong>. (/tɕiː/; Formal: <em>ťī</em>): many</p>
+<p><strong>mopi</strong>. (/mˠo̞pˠi/; Formal: <em>mopi</em>): some</p>
+<p><strong>aujh</strong>. (/ɑu̯dʑ/; Formal: <em>aųď</em>): few</p>
+<h3 id="numbers"><a class="header" href="#numbers">Numbers</a></h3>
+<!-- -->
+<p><strong>mö</strong>. (/mˠø̞/; Formal: <em>mö</em>): one</p>
+<p><strong>böi</strong>. (/bˠøi̯/; Formal: <em>böį</em>): two</p>
+<p><strong>ghä</strong>. (/ɣæ/; Formal: <em>x̨ä</em>): three</p>
+<p><strong>viju</strong>. (/βʲiju/; Formal: <em>ṿiju</em>): four</p>
+<p><strong>öijhe</strong>. (/øi̯dʑe̞/; Formal: <em>öįďe</em>): five</p>
+<p><strong>hhö</strong>. (/çø̞/; Formal: <em>x̌ö</em>): six</p>
+<p><strong>möhhö</strong>. (/mˠø̞çø̞/; Formal: <em>möx̌ö</em>): seven</p>
+<p><strong>vijubui</strong>. (/βʲijubˠui̯/; Formal: <em>ṿijubuį</em>): eight</p>
+<p><strong>ghäghä</strong>. (/ɣæɣæ/; Formal: <em>x̨äx̨ä</em>): nine</p>
+<p><strong>öijheböi</strong>. (/øi̯dʑe̞bˠøi̯/; Formal: <em>öįďeböį</em>): ten</p>
+<p><strong>möijheböi</strong>. (/mˠøi̯dʑe̞bˠøi̯/; Formal: <em>möįďeböį</em>): eleven</p>
+<p><strong>böijheböi</strong>. (/bˠøi̯dʑe̞bˠøi̯/; Formal: <em>böįďeböį</em>): twelve</p>
+<h3 id="to-be"><a class="header" href="#to-be">To Be</a></h3>
+<!-- -->
+<p><strong>shalu</strong>. (/ʃɑlʲu/; Formal: <em>šalu</em>): i am</p>
+<p><strong>shato</strong>. (/ʃɑt̪ˠo̞/; Formal: <em>šato</em>): you are (singular)</p>
+<p><strong>shafa</strong>. (/ʃɑɸˠɑ/; Formal: <em>šafa</em>): he is</p>
+<p><strong>shala</strong>. (/ʃɑlʲɑ/; Formal: <em>šala</em>): she is</p>
+<p><strong>shata</strong>. (/ʃɑt̪ˠɑ/; Formal: <em>šata</em>): they are (singular personal)</p>
+<p><strong>shaima</strong>. (/ʃɑi̯mˠɑ/; Formal: <em>šaįma</em>): it is (impersonal)</p>
+<p><strong>shairbu</strong>. (/ʃɑi̯rʲbˠu/; Formal: <em>šaįṛbu</em>): we are</p>
+<p><strong>shaigo</strong>. (/ʃɑi̯ɟo̞/; Formal: <em>šaįǧo</em>): you are (plural)</p>
+<p><strong>shaiulha</strong>. (/ʃɑi̯uɫ̪ɑ/; Formal: <em>šaįuła</em>): they are</p>
+<h3 id="verbs"><a class="header" href="#verbs">Verbs</a></h3>
+<!-- -->
+<p><strong>ääci</strong>. (/æːki/; Formal: <em>ǟci</em>): to laugh</p>
+<p><strong>aaci</strong>. (/ɑːki/; Formal: <em>āci</em>): to come</p>
+<p><strong>äici</strong>. (/æi̯ki/; Formal: <em>äįci</em>): to wash</p>
+<p><strong>aici</strong>. (/ɑi̯ki/; Formal: <em>aįci</em>): to give</p>
+<p><strong>auci</strong>. (/ɑu̯ki/; Formal: <em>aųci</em>): to die</p>
+<p><strong>beci</strong>. (/bʲe̞ki/; Formal: <em>ḅeci</em>): to walk</p>
+<p><strong>bepörhheüci</strong>. (/bʲe̞pʲø̞rˠçey̯ki/; Formal: <em>ḅep̣örx̌eų̈ ci</em>): to swim</p>
+<p><strong>bevühhöci</strong>. (/bʲe̞βʲyxø̞ki/; Formal: <em>ḅeṿüxöci</em>): to fly</p>
+<p><strong>büci</strong>. (/bˠyki/; Formal: <em>büci</em>): to pull</p>
+<p><strong>eetici</strong>. (/e̞ːt̪ˠiki/; Formal: <em>ētici</em>): to work</p>
+<p><strong>eici</strong>. (/ei̯ki/; Formal: <em>eįci</em>): to sell</p>
+<p><strong>eipeci</strong>. (/ei̯pˠe̞ki/; Formal: <em>eįpeci</em>): to have</p>
+<p><strong>eüci</strong>. (/ey̯ki/; Formal: <em>eų̈ ci</em>): to buy</p>
+<p><strong>eülci</strong>. (/ey̯lʲki/; Formal: <em>eų̈ lci</em>): to fight</p>
+<p><strong>fafouci</strong>. (/ɸʲɑɸʲou̯ki/; Formal: <em>f̣af̣oųci</em>): to get</p>
+<p><strong>flaci</strong>. (/ɸʲlʲɑki/; Formal: <em>f̣laci</em>): to live</p>
+<p><strong>freci</strong>. (/ɸˠrˠe̞ki/; Formal: <em>freci</em>): to think</p>
+<p><strong>gheci</strong>. (/ɣe̞ki/; Formal: <em>x̨eci</em>): to trade</p>
+<p><strong>göveci</strong>. (/ɡø̞βˠe̞ki/; Formal: <em>göveci</em>): to help</p>
+<p><strong>guici</strong>. (/ɟui̯ki/; Formal: <em>ǧuįci</em>): to hold</p>
+<p><strong>hhilici</strong>. (/çilʲiki/; Formal: <em>x̌ilici</em>): to stand</p>
+<p><strong>iehäici</strong>. (/ie̯hæi̯ki/; Formal: <em>ięhäįci</em>): to eat</p>
+<p><strong>iüci</strong>. (/iy̯ki/; Formal: <em>ių̈ ci</em>): to burn</p>
+<p><strong>iüci</strong>. (/iy̯ki/; Formal: <em>ių̈ ci</em>): to say</p>
+<p><strong>iügici</strong>. (/iy̯ciki/; Formal: <em>ių̈ čici</em>): to vomit</p>
+<p><strong>jöci</strong>. (/jø̞ki/; Formal: <em>jöci</em>): to fall</p>
+<p><strong>johheci</strong>. (/jo̞xe̞ki/; Formal: <em>joxeci</em>): to drink</p>
+<p><strong>lheüci</strong>. (/ɫ̪ey̯ki/; Formal: <em>łeų̈ ci</em>): to bite</p>
+<p><strong>lhiüci</strong>. (/ɫ̪iy̯ki/; Formal: <em>łių̈ ci</em>): to take</p>
+<p><strong>lhöslüci</strong>. (/ɫ̪ø̞sˠlʲyki/; Formal: <em>łöslüci</em>): to spit</p>
+<p><strong>lhuci</strong>. (/ɫ̪uki/; Formal: <em>łuci</em>): to suck</p>
+<p><strong>lülhmüceci</strong>. (/lʲyɫ̪mʲyke̞ki/; Formal: <em>lüłṃüceci</em>): to cut</p>
+<p><strong>mäci</strong>. (/mʲæki/; Formal: <em>ṃäci</em>): to fear</p>
+<p><strong>mädteci</strong>. (/mʲæd̪ˠt̪ˠe̞ki/; Formal: <em>ṃädteci</em>): to push</p>
+<p><strong>müci</strong>. (/mˠyki/; Formal: <em>müci</em>): to scratch</p>
+<p><strong>müshrici</strong>. (/mʲyʃrˠiki/; Formal: <em>ṃüšrici</em>): to hear</p>
+<p><strong>ngäci</strong>. (/ɲæki/; Formal: <em>ŋ̌äci</em>): to steal</p>
+<p><strong>ngapaci</strong>. (/ɲɑpʲɑki/; Formal: <em>ŋ̌ap̣aci</em>): to make</p>
+<p><strong>öci</strong>. (/ø̞ki/; Formal: <em>öci</em>): to freeze</p>
+<p><strong>öhhöci</strong>. (/ø̞xø̞ki/; Formal: <em>öxöci</em>): to sing</p>
+<p><strong>ölöci</strong>. (/ø̞lʲø̞ki/; Formal: <em>ölöci</em>): to rub</p>
+<p><strong>önüirneci</strong>. (/ø̞n̪ˠyi̯rʲnʲe̞ki/; Formal: <em>önüįṛṇeci</em>): to kill</p>
+<p><strong>ööci</strong>. (/ø̞ːki/; Formal: <em>ȫci</em>): to turn (motion, not change, intransitive)</p>
+<p><strong>oouci</strong>. (/o̞ːuki/; Formal: <em>ōuci</em>): to count</p>
+<p><strong>ougaredeci</strong>. (/ou̯ɟɑrʲe̞d̪ˠe̞ki/; Formal: <em>oųǧaṛedeci</em>): to flow</p>
+<p><strong>öüsreci</strong>. (/øy̯sˠrʲe̞ki/; Formal: <em>öų̈ sṛeci</em>): to tie</p>
+<p><strong>päci</strong>. (/pʲæki/; Formal: <em>p̣äci</em>): to lie (as in a bed)</p>
+<p><strong>pähüci</strong>. (/pˠæhyki/; Formal: <em>pähüci</em>): to know</p>
+<p><strong>pähüülhä</strong>. (/pˠæhyːɫ̪æ/; Formal: <em>pähǖłä</em>): they know</p>
+<p><strong>präci</strong>. (/pʲrʲæki/; Formal: <em>p̣ṛäci</em>): to sit</p>
+<p><strong>prüfüci</strong>. (/pʲrʲyɸʲyki/; Formal: <em>p̣ṛüf̣üci</em>): to swell</p>
+<p><strong>rafbeci</strong>. (/rˠɑɸʲbˠe̞ki/; Formal: <em>raf̣beci</em>): to split</p>
+<p><strong>röteci</strong>. (/rʲø̞t̪ˠe̞ki/; Formal: <em>ṛöteci</em>): to blow</p>
+<p><strong>ruohhounaci</strong>. (/rˠuo̯çou̯nʲɑki/; Formal: <em>ruǫx̌oųṇaci</em>): to play</p>
+<p><strong>shici</strong>. (/ʃiki/; Formal: <em>šici</em>): to stab</p>
+<p><strong>soci</strong>. (/sˠo̞ki/; Formal: <em>soci</em>): to smell</p>
+<p><strong>sroci</strong>. (/sˠrˠo̞ki/; Formal: <em>sroci</em>): to float</p>
+<p><strong>tachci</strong>. (/t̪ˠɑtɕki/; Formal: <em>taťci</em>): to wipe</p>
+<p><strong>tifüöci</strong>. (/t̪ˠiɸʲyø̯ki/; Formal: <em>tif̣üǫ̈ ci</em>): to breathe</p>
+<p><strong>uci</strong>. (/uki/; Formal: <em>uci</em>): to sew</p>
+<p><strong>üici</strong>. (/yi̯ki/; Formal: <em>üįci</em>): to hunt</p>
+<p><strong>üiüci</strong>. (/yi̯yki/; Formal: <em>üįüci</em>): to dig</p>
+<p><strong>ulhci</strong>. (/uɫ̪ki/; Formal: <em>ułci</em>): to sleep</p>
+<p><strong>ümüci</strong>. (/ymˠyki/; Formal: <em>ümüci</em>): to see</p>
+<p><strong>uoahhfoci</strong>. (/uo̯ɑçɸʲo̞ki/; Formal: <em>uǫax̌f̣oci</em>): to hit</p>
+<p><strong>uoci</strong>. (/uo̯ki/; Formal: <em>uǫci</em>): to squeeze</p>
+<p><strong>vojgoci</strong>. (/βˠo̞jɟo̞ki/; Formal: <em>vojǧoci</em>): to throw</p>
+<h3 id="other-words"><a class="header" href="#other-words">Other Words</a></h3>
+<!-- -->
+<p><strong>aa</strong>. (/ɑː/; Formal: <em>ā</em>): in</p>
+<p><strong>aal</strong>. (/ɑːlʲ/; Formal: <em>āl</em>): at</p>
+<p><strong>äide</strong>. (/æi̯d̪ˠe̞/; Formal: <em>äįde</em>): hand</p>
+<p><strong>äidevühhö</strong>. (/æi̯d̪ˠe̞βʲyxø̞/; Formal: <em>äįdeṿüxö</em>): wing</p>
+<p><strong>äilhe</strong>. (/æi̯ɫ̪e̞/; Formal: <em>äįłe</em>): salt</p>
+<p><strong>äire</strong>. (/æi̯rˠe̞/; Formal: <em>äįre</em>): black</p>
+<p><strong>au</strong>. (/ɑu̯/; Formal: <em>aų</em>): ice</p>
+<p><strong>augo</strong>. (/ɑu̯ɟo̞/; Formal: <em>aųǧo</em>): right (relative direction)</p>
+<p><strong>ävve</strong>. (/æβʲβʲe̞/; Formal: <em>äṿṿe</em>): father</p>
+<p><strong>blhü</strong>. (/bˠɫ̪y/; Formal: <em>błü</em>): seed</p>
+<p><strong>blhüpöd</strong>. (/bˠɫ̪ypʲø̞d̪ˠ/; Formal: <em>błüp̣öd</em>): fruit</p>
+<p><strong>chlö</strong>. (/tɕlʲø̞/; Formal: <em>ťlö</em>): year</p>
+<p><strong>chönüü</strong>. (/tɕø̞n̪ˠyː/; Formal: <em>ťönǖ</em>): neck</p>
+<p><strong>chushe</strong>. (/tɕuʃe̞/; Formal: <em>ťuše</em>): name</p>
+<p><strong>gi</strong>. (/ci/; Formal: <em>či</em>): rotten</p>
+<p><strong>gighlhe</strong>. (/ciɣɫ̪e̞/; Formal: <em>čix̨łe</em>): good</p>
+<p><strong>coplhi</strong>. (/ko̞pʲɫ̪i/; Formal: <em>cop̣łi</em>): day</p>
+<p><strong>crocha</strong>. (/krˠo̞tɕɑ/; Formal: <em>croťa</em>): meat</p>
+<p><strong>crüfäjh</strong>. (/krˠyɸʲædʑ/; Formal: <em>crüf̣äď</em>): large</p>
+<p><strong>crügö</strong>. (/krˠyɡø̞/; Formal: <em>crügö</em>): big</p>
+<p><strong>gü</strong>. (/cy/; Formal: <em>čü</em>): small</p>
+<p><strong>ee</strong>. (/e̞ː/; Formal: <em>ē</em>): round</p>
+<p><strong>eia</strong>. (/ei̯ɑ/; Formal: <em>eįa</em>): river</p>
+<p><strong>eigö</strong>. (/ei̯ɟø̞/; Formal: <em>eįǧö</em>): left</p>
+<p><strong>eufa</strong>. (/eu̯ɸʲɑ/; Formal: <em>eųf̣a</em>): love</p>
+<p><strong>eühhrö</strong>. (/ey̯çrʲø̞/; Formal: <em>eų̈ x̌ṛö</em>): breast</p>
+<p><strong>fäflür</strong>. (/ɸˠæɸʲlʲyrˠ/; Formal: <em>fäf̣lür</em>): brother</p>
+<p><strong>fäjh</strong>. (/ɸʲædʑ/; Formal: <em>f̣äď</em>): long</p>
+<p><strong>färödjä</strong>. (/ɸˠærʲø̞d̪ˠjæ/; Formal: <em>fäṛödjä</em>): son</p>
+<p><strong>fät</strong>. (/ɸʲæt̪ˠ/; Formal: <em>f̣ät</em>): lake</p>
+<p><strong>fi</strong>. (/ɸˠi/; Formal: <em>fi</em>): stone</p>
+<p><strong>flöjh</strong>. (/ɸʲlʲø̞dʑ/; Formal: <em>f̣löď</em>): nose</p>
+<p><strong>flü</strong>. (/ɸʲlʲy/; Formal: <em>f̣lü</em>): wind</p>
+<p><strong>flür</strong>. (/ɸʲlʲyrˠ/; Formal: <em>f̣lür</em>): sibling, friend (these are the same in many elven and goblin cultures)</p>
+<p><strong>fö</strong>. (/ɸʲø̞/; Formal: <em>f̣ö</em>): cloud</p>
+<p><strong>ghei</strong>. (/ɣei̯/; Formal: <em>x̨eį</em>): water</p>
+<p><strong>gheimongi</strong>. (/ɣei̯mˠo̞ɲi/; Formal: <em>x̨eįmoŋ̌i</em>): wet</p>
+<p><strong>ghofiga</strong>. (/ɣo̞ɸˠiɡɑ/; Formal: <em>x̨ofiga</em>): happy</p>
+<p><strong>ghrimü</strong>. (/ɣrˠimʲy/; Formal: <em>x̨riṃü</em>): dog</p>
+<p><strong>ghu</strong>. (/ɣu/; Formal: <em>x̨u</em>): louse</p>
+<p><strong>gohhei</strong>. (/ɡo̞xei̯/; Formal: <em>goxeį</em>): foot</p>
+<p><strong>grubiepro</strong>. (/ɡrˠubʲie̯pˠrˠo̞/; Formal: <em>gruḅiępro</em>): star</p>
+<p><strong>grüö</strong>. (/ɟrʲyø̯/; Formal: *ǧṛüǫ̈ *): thin</p>
+<p><strong>günähämö</strong>. (/ɡynʲæhæmʲø̞/; Formal: <em>güṇähäṃö</em>): dry</p>
+<p><strong>hampa</strong>. (/hɑmˠpˠɑ/; Formal: <em>hampa</em>): rain</p>
+<p><strong>hhäbäshä</strong>. (/xæbʲæʃæ/; Formal: <em>xäḅäšä</em>): hair</p>
+<p><strong>hhäbäshävühhö</strong>. (/xæbʲæʃæβʲyxø̞/; Formal: <em>xäḅäšäṿüxö</em>): feather</p>
+<p><strong>hhe</strong>. (/çe̞/; Formal: <em>x̌e</em>): and</p>
+<p><strong>hotlha</strong>. (/ho̞t̪ˠɫ̪ɑ/; Formal: <em>hotła</em>): liver</p>
+<p><strong>hötüö</strong>. (/hø̞t̪ˠyø̯/; Formal: *hötüǫ̈ *): old</p>
+<p><strong>humoshoi</strong>. (/humʲo̞ʃoi̯/; Formal: <em>huṃošoį</em>): guts</p>
+<p><strong>iepä</strong>. (/ie̯pʲæ/; Formal: <em>ięp̣ä</em>): pride</p>
+<p><strong>ievngo</strong>. (/ie̯βˠŋo̞/; Formal: <em>ięvŋo</em>): warm</p>
+<p><strong>iiplunge</strong>. (/iːpʲlʲuɲe̞/; Formal: <em>īp̣luŋ̌e</em>): belly</p>
+<p><strong>iu</strong>. (/iu̯/; Formal: <em>ių</em>): heart</p>
+<p><strong>iülve</strong>. (/iy̯lʲβˠe̞/; Formal: <em>ių̈ lve</em>): tongue (the organ)</p>
+<p><strong>jebrä</strong>. (/je̞bˠrʲæ/; Formal: <em>jebṛä</em>): ear</p>
+<p><strong>jevighüi</strong>. (/je̞βʲiɣyi̯/; Formal: <em>jeṿix̨üį</em>): road</p>
+<p><strong>jüghgi</strong>. (/jyɣɟi/; Formal: <em>jüx̨ǧi</em>): grass</p>
+<p><strong>jupal</strong>. (/jupʲɑlʲ/; Formal: <em>jup̣al</em>): tooth</p>
+<p><strong>la</strong>. (/lʲɑ/; Formal: <em>la</em>): straight</p>
+<p><strong>läflür</strong>. (/lʲæɸʲlʲyrˠ/; Formal: <em>läf̣lür</em>): sister</p>
+<p><strong>lärödjä</strong>. (/lʲærʲø̞d̪ˠjæ/; Formal: <em>läṛödjä</em>): daughter</p>
+<p><strong>leiti</strong>. (/lʲei̯t̪ˠi/; Formal: <em>leįti</em>): woman</p>
+<p><strong>lhaagi</strong>. (/ɫ̪ɑːɟi/; Formal: <em>łāǧi</em>): tail</p>
+<p><strong>lhejsa</strong>. (/ɫ̪e̞jsˠɑ/; Formal: <em>łejsa</em>): flower</p>
+<p><strong>lhi</strong>. (/ɫ̪i/; Formal: <em>łi</em>): short</p>
+<p><strong>lhi</strong>. (/ɫ̪i/; Formal: <em>łi</em>): white</p>
+<p><strong>lho</strong>. (/ɫ̪o̞/; Formal: <em>ło</em>): ash</p>
+<p><strong>lhühhü</strong>. (/ɫ̪yçy/; Formal: <em>łüx̌ü</em>): fat (noun)</p>
+<p><strong>lö</strong>. (/lʲø̞/; Formal: <em>lö</em>): smoke</p>
+<p><strong>lüfinü</strong>. (/lʲyɸʲin̪ˠy/; Formal: <em>lüf̣inü</em>): sea</p>
+<p><strong>majha</strong>. (/mʲɑdʑɑ/; Formal: <em>ṃaďa</em>): mother</p>
+<p><strong>meitito</strong>. (/mʲei̯t̪ˠit̪ˠo̞/; Formal: <em>ṃeįtito</em>): man (adult male)</p>
+<p><strong>meumbo</strong>. (/mˠeu̯mˠbʲo̞/; Formal: <em>meųmḅo</em>): snake</p>
+<p><strong>mojhash</strong>. (/mˠo̞jhɑʃ/; Formal: <em>mojhaš</em>): fog</p>
+<p><strong>mongi</strong>. (/mˠo̞ɲi/; Formal: <em>moŋ̌i</em>): full</p>
+<p><strong>mösh</strong>. (/mʲø̞ʃ/; Formal: <em>ṃöš</em>): smooth</p>
+<p><strong>müjce</strong>. (/mˠyjke̞/; Formal: <em>müjce</em>): hate</p>
+<p><strong>ngä</strong>. (/ɲæ/; Formal: <em>ŋ̌ä</em>): yellow</p>
+<p><strong>ngagji</strong>. (/ŋɑɡji/; Formal: <em>ŋagji</em>): far</p>
+<p><strong>ngängö</strong>. (/ŋæŋø̞/; Formal: <em>ŋäŋö</em>): thick</p>
+<p><strong>nge</strong>. (/ɲe̞/; Formal: <em>ŋ̌e</em>): egg</p>
+<p><strong>ngöne</strong>. (/ɲø̞nʲe̞/; Formal: <em>ŋ̌öṇe</em>): new</p>
+<p><strong>ngu</strong>. (/ŋu/; Formal: <em>ŋu</em>): sun</p>
+<p><strong>nguri</strong>. (/ŋurˠi/; Formal: <em>ŋuri</em>): night</p>
+<p><strong>ohhe</strong>. (/o̞xe̞/; Formal: <em>oxe</em>): skin</p>
+<p><strong>önggöpfü</strong>. (/ø̞ŋcø̞pʲɸˠy/; Formal: <em>öŋčöp̣fü</em>): heavy</p>
+<p><strong>ööbi</strong>. (/ø̞ːbʲi/; Formal: <em>ȫḅi</em>): root</p>
+<p><strong>ooliinga</strong>. (/o̞ːlʲiːɲɑ/; Formal: <em>ōlīŋ̌a</em>): leg</p>
+<p><strong>öömä</strong>. (/ø̞ːmʲæ/; Formal: <em>ȫṃä</em>): sand</p>
+<p><strong>oope</strong>. (/o̞ːpˠe̞/; Formal: <em>ōpe</em>): mouth</p>
+<p><strong>oorviu</strong>. (/o̞ːrˠβʲiu̯/; Formal: <em>ōrṿių</em>): fire</p>
+<p><strong>pa</strong>. (/pˠɑ/; Formal: <em>pa</em>): back</p>
+<p><strong>penggö</strong>. (/pˠe̞ŋɟø̞/; Formal: <em>peŋǧö</em>): fingernail</p>
+<p><strong>pörhheü</strong>. (/pʲø̞rˠçey̯/; Formal: *p̣örx̌eų̈ *): fish</p>
+<p><strong>pori</strong>. (/pʲo̞rʲi/; Formal: <em>p̣oṛi</em>): because</p>
+<p><strong>pucho</strong>. (/pʲutɕo̞/; Formal: <em>p̣uťo</em>): near</p>
+<p><strong>rämeumbö</strong>. (/rˠæmˠeu̯mˠbʲø̞/; Formal: <em>rämeųmḅö</em>): worm</p>
+<p><strong>reta</strong>. (/rʲe̞t̪ˠɑ/; Formal: <em>ṛeta</em>): earth</p>
+<p><strong>rö</strong>. (/rʲø̞/; Formal: <em>ṛö</em>): sky</p>
+<p><strong>rodja</strong>. (/rʲo̞d̪ˠjɑ/; Formal: <em>ṛodja</em>): child</p>
+<p><strong>ruch</strong>. (/rˠutɕ/; Formal: <em>ruť</em>): not</p>
+<p><strong>ruchflur</strong>. (/rˠutɕɸʲlʲurˠ/; Formal: <em>ruťf̣lur</em>): enemy</p>
+<p><strong>shi</strong>. (/ʃi/; Formal: <em>ši</em>): dull (as a knife)</p>
+<p><strong>shöpli</strong>. (/ʃø̞pʲlʲi/; Formal: <em>šöp̣li</em>): horn (of an animal)</p>
+<p><strong>shräme</strong>. (/ʃrʲæmʲe̞/; Formal: <em>šṛäṃe</em>): other</p>
+<p><strong>shri</strong>. (/ʃrʲi/; Formal: <em>šṛi</em>): bad</p>
+<p><strong>shruhhei</strong>. (/ʃrʲuçei̯/; Formal: <em>šṛux̌eį</em>): mountain</p>
+<p><strong>shu</strong>. (/ʃu/; Formal: <em>šu</em>): correct</p>
+<p><strong>shuchii</strong>. (/ʃutɕiː/; Formal: <em>šuťī</em>): forest</p>
+<p><strong>shuchuje</strong>. (/ʃutɕuje̞/; Formal: <em>šuťuje</em>): tree</p>
+<p><strong>shügü</strong>. (/ʃycy/; Formal: <em>šüčü</em>): stick</p>
+<p><strong>sino</strong>. (/sˠin̪ˠo̞/; Formal: <em>sino</em>): rope</p>
+<p><strong>sope</strong>. (/sˠo̞pˠe̞/; Formal: <em>sope</em>): shame</p>
+<p><strong>sragii</strong>. (/sˠrˠɑɡiː/; Formal: <em>sragī</em>): head</p>
+<p><strong>sungo</strong>. (/sˠuŋo̞/; Formal: <em>suŋo</em>): cold</p>
+<p><strong>supro</strong>. (/sˠupˠrʲo̞/; Formal: <em>supṛo</em>): leaf</p>
+<p><strong>tää</strong>. (/t̪ˠæː/; Formal: <em>tǟ</em>): animal</p>
+<p><strong>tihhari</strong>. (/t̪ˠixɑrˠi/; Formal: <em>tixari</em>): bark (of a tree)</p>
+<p><strong>tivit</strong>. (/t̪ˠiβˠit̪ˠ/; Formal: <em>tivit</em>): spouse, wife, husband (no gender)</p>
+<p><strong>tlhäri</strong>. (/t̪ˠɫ̪ærʲi/; Formal: <em>tłäṛi</em>): blood</p>
+<p><strong>tohheudu</strong>. (/t̪ˠo̞xeu̯d̪ˠu/; Formal: <em>toxeųdu</em>): anger</p>
+<p><strong>ü</strong>. (/y/; Formal: <em>ü</em>): if</p>
+<p><strong>udghi</strong>. (/ud̪ˠɣi/; Formal: <em>udx̨i</em>): red</p>
+<p><strong>üi</strong>. (/yi̯/; Formal: <em>üį</em>): sharp (as a knife)</p>
+<p><strong>uijhlo</strong>. (/ui̯dʑlʲo̞/; Formal: <em>uįďlo</em>): wide</p>
+<p><strong>üit</strong>. (/yi̯t̪ˠ/; Formal: <em>üįt</em>): narrow</p>
+<p><strong>üiti</strong>. (/yi̯t̪ˠi/; Formal: <em>üįti</em>): person (humanoid)</p>
+<p><strong>ümü</strong>. (/ymˠy/; Formal: <em>ümü</em>): eye</p>
+<p><strong>uvlo</strong>. (/uβˠlʲo̞/; Formal: <em>uvlo</em>): snow</p>
+<p><strong>vädü</strong>. (/βʲæd̪ˠy/; Formal: <em>ṿädü</em>): bone</p>
+<p><strong>vängäi</strong>. (/βʲæɲæi̯/; Formal: <em>ṿäŋ̌äį</em>): dirty</p>
+<p><strong>viüo</strong>. (/βˠiy̯o̞/; Formal: <em>vių̈ o</em>): knee</p>
+<p><strong>vove</strong>. (/βʲo̞βʲe̞/; Formal: <em>ṿoṿe</em>): with</p>
+<p><strong>vü</strong>. (/βˠy/; Formal: <em>vü</em>): dust</p>
+<p><strong>vüblhä</strong>. (/βʲybʲɫ̪æ/; Formal: <em>ṿüḅłä</em>): green</p>
+<p><strong>vuhho</strong>. (/βʲuxo̞/; Formal: <em>ṿuxo</em>): bird</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="hebdomad.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="credits.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="hebdomad.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="credits.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="theme/pagetoc.js"></script>
+
+
+
+    </div>
+    </body>
+</html>
