@@ -69,6 +69,16 @@ table caption {
   font-variant: small-caps;
 }
 
+table th {
+  white-space-collapse: preserve-breaks;
+  text-wrap-mode: nowrap;
+}
+
+table td {
+  white-space-collapse: preserve-breaks;
+  text-wrap-mode: nowrap;
+}
+
 /* Chapter and section headings plus hr get some special looks */
 .content .header {
   /* I have to make this important because custom CSS is included first, so the general.css overrides the color */
@@ -170,4 +180,21 @@ h1.inannak-main-title {
 .pagetoc a.pagetoc-H6.active {
   /* I have to make this important to override what pagetoc.css does, which is also "important", apparently. */
   color: var(--sidebar-active) !important;
+}
+
+td.column-group-start {
+  border-right: none;
+  padding-right: 0px;
+}
+
+td.column-group-end {
+  border-left: none;
+  padding-left: 0px;
+}
+
+td.column-group-middle {
+  border-right: none;
+  padding-right: 0px;
+  border-left: none;
+  padding-left: 0px;
 }
