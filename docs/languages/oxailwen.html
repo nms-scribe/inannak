@@ -1,0 +1,672 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Song of Eilwain - The World of Inannak</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../theme/custom.css">
+        <link rel="stylesheet" href="../theme/pagetoc.css">
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../searchindex.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">The World of Inannak</h1>
+
+                    <div class="right-buttons">
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <i class="fa fa-spinner fa-spin"></i>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="song-of-eilwain"><a class="header" href="#song-of-eilwain">Song of Eilwain</a></h1>
+<p><span class="chapter-flourish">The Language of the Hebdomad</span> is called in itself <em>O̲xaʽilwe̲n</em>, or Ochailwen, but also known as the Language of the Arcane, and the Song of Eilwain. This tongue is used for magical incantations. It was originally considered a sacred language, not to be spoken except directly to the gods of the Hebdomad. This included in prayer, and as magic was thought to be controlled by the gods, it was allowed for magical incantations as well.</p>
+<p>This language was not spoken among the gods themselves, as they had more direct means of communication than speaking. However, the god Eilwain was said to have created this tongue to allow mortals to come closer to the gods. In truth, she designed it as the language for use in the magic incantations she developed. Distinguishing it from other human languages and carefully controlling its usage ensured that magic was not accidentally spoken.</p>
+<p>The name of the language contains Eilwain's name in it, and some Elves have falsely etymologized it as "Song of Eilwain", as the /ox/ prefix resembles Elven <em>öhhöci</em>, "to sing". However, the actual etymology, and whether Eilwain intended that to be her name, is unknown.</p>
+<p>Ochailwen is an analytic language. Grammatical information such as person, number, case, tense, aspect and mood are given by prepositions and other particles rather than affixes to the words. Word order is strictly Verb-Subject-Object. Nouns are not gendered, even for persons or animate objects.</p>
+<h2 id="ochailwen-for-non-vocal-speakers"><a class="header" href="#ochailwen-for-non-vocal-speakers">Ochailwen for Non-vocal Speakers</a></h2>
+<p>The language described here is in the Anthropic Vocal language class. However, Ochailwen is not limited to only anthropic speakers, or even only anthropic speakers with working voices. Alongside the vocal language are dialects of the language that can be spoken by any of the Eight Liberated Species, and more. There are gesture versions, essence versions, and dialects for several kinds of non-anthropic mouths. These languages are not mutually intelligible, but there are one-to-one correspondences between the phonemes below and the language elements used by the other systems. Their grammar is the same, as much as it can be, and they follow the same writing system.</p>
+<p>Practicioners of this language insist that the pronunciation of the language is not as important as the psychic intent. A dialect of the language is necessary, but minor shifts in pronunciation will not cause magic cast with this language to fail. A mere switch in stress between two syllables will not break a spell, as long as the caster has the correct intentions in mind.</p>
+<h2 id="phonology"><a class="header" href="#phonology">Phonology</a></h2>
+<p>Syllables are always CV or CVC. If present, the final consonant is limited to pulmonic consonants apart from the tap or the glottal stop. Words that are spelled to start with a vowel actually start with a glottal stop. Ochailwen is noted for some unusual phonemic differences, which are rare or even impossible in human languages.</p>
+<h3 id="consonants"><a class="header" href="#consonants">Consonants</a></h3>
+<!-- -->
+<table class="elbie phonemes">
+ <caption>
+Consonants </caption>
+ <thead>
+  <tr class="column-head">
+   <th>
+   </th>
+   <th class="column-header">
+Bilabial   </th>
+   <th class="column-header">
+Alveolar   </th>
+   <th class="column-header">
+Post-
+alveolar   </th>
+   <th class="column-header">
+Labio-
+Velar   </th>
+   <th class="column-header">
+Velar   </th>
+   <th class="column-header">
+Glottal   </th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr class="body-row">
+   <th class="row-header">
+Plosive Pulmonic   </th>
+   <td>
+/p/   </td>
+   <td>
+/t/   </td>
+   <td>
+   </td>
+   <td>
+   </td>
+   <td>
+/k/   </td>
+   <td>
+/ʔ/   </td>
+  </tr>
+  <tr class="body-row">
+   <th class="row-header">
+Plosive Ejective   </th>
+   <td>
+/pʼ/   </td>
+   <td>
+/tʼ/   </td>
+   <td>
+   </td>
+   <td>
+   </td>
+   <td>
+/kʼ/   </td>
+   <td>
+   </td>
+  </tr>
+  <tr class="body-row">
+   <th class="row-header">
+Affricate Pulmonic   </th>
+   <td>
+   </td>
+   <td>
+/t͜s/   </td>
+   <td>
+   </td>
+   <td>
+   </td>
+   <td>
+   </td>
+   <td>
+   </td>
+  </tr>
+  <tr class="body-row">
+   <th class="row-header">
+Affricate Ejective   </th>
+   <td>
+   </td>
+   <td>
+/t͜sʼ/   </td>
+   <td>
+   </td>
+   <td>
+   </td>
+   <td>
+   </td>
+   <td>
+   </td>
+  </tr>
+  <tr class="body-row">
+   <th class="row-header">
+Fricative   </th>
+   <td>
+   </td>
+   <td>
+/s/   </td>
+   <td>
+/ʃ/   </td>
+   <td>
+   </td>
+   <td>
+/x/   </td>
+   <td>
+   </td>
+  </tr>
+  <tr class="body-row">
+   <th class="row-header">
+Nasal   </th>
+   <td>
+/m/   </td>
+   <td>
+/n/   </td>
+   <td>
+   </td>
+   <td>
+   </td>
+   <td>
+   </td>
+   <td>
+   </td>
+  </tr>
+  <tr class="body-row">
+   <th class="row-header">
+Approximant   </th>
+   <td>
+   </td>
+   <td>
+/l/   </td>
+   <td>
+   </td>
+   <td>
+/w/   </td>
+   <td>
+   </td>
+   <td>
+   </td>
+  </tr>
+  <tr class="body-row">
+   <th class="row-header">
+Tap   </th>
+   <td>
+   </td>
+   <td>
+/ɾ/   </td>
+   <td>
+   </td>
+   <td>
+   </td>
+   <td>
+   </td>
+   <td>
+   </td>
+  </tr>
+ </tbody>
+</table>
+<p>There is no voiced/unvoiced distinction in consonants. Nasal, approximant and tap consonants are always voiced. Obstruents are generally considered unvoiced, although they may sound voiced in certain allophonic situations. Plosives and Affricates do have a pulmonic/ejective distinction. Pulmonic plosives are always unaspirated. (Ejective consonants are not found in English and involve a movement of the glottis that the language does not ordinarily control. They can be heard in some dialects of English when and ending plosives in words like "stop", "bat" or "luck", or the /t/ in the interjection "ptoeey", are over-enunciated.)</p>
+<h3 id="vowels"><a class="header" href="#vowels">Vowels</a></h3>
+<!-- -->
+<table class="elbie phonemes">
+ <caption>
+Vowels (short ~ long ~ devoiced) </caption>
+ <thead>
+  <tr class="column-head">
+   <th>
+   </th>
+   <th class="column-header" colspan=3>
+Front   </th>
+   <th class="column-header" colspan=3>
+Back   </th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr class="body-row">
+   <th class="row-header">
+Close   </th>
+   <td class="column-group-start">
+/i/   </td>
+   <td class="column-group-middle">
+/iː/   </td>
+   <td class="column-group-end">
+/i̥/   </td>
+   <td class="column-group-start">
+/u/   </td>
+   <td class="column-group-middle">
+/uː/   </td>
+   <td class="column-group-end">
+/u̥/   </td>
+  </tr>
+  <tr class="body-row">
+   <th class="row-header">
+Close-Mid   </th>
+   <td class="column-group-start">
+/e/   </td>
+   <td class="column-group-middle">
+/eː/   </td>
+   <td class="column-group-end">
+/e̥/   </td>
+   <td class="column-group-start">
+/o/   </td>
+   <td class="column-group-middle">
+/oː/   </td>
+   <td class="column-group-end">
+/o̥/   </td>
+  </tr>
+  <tr class="body-row">
+   <th class="row-header">
+Open   </th>
+   <td class="column-group-start">
+/a/   </td>
+   <td class="column-group-middle">
+/aː/   </td>
+   <td class="column-group-end">
+/ḁ/   </td>
+   <td class="column-group-start">
+   </td>
+   <td class="column-group-middle">
+   </td>
+   <td class="column-group-end">
+   </td>
+  </tr>
+ </tbody>
+</table>
+<p>The standard five vowels are present in the language, however they are further contrasted into three qualities: long, short and devoiced. The devoiced vowels are often pronounced slightly shorter than short vowels, and without sound, as if they were whispered. Sometimes, the devoiced vowels may have more of a breathy-voiced pronunciation.</p>
+<h3 id="stress"><a class="header" href="#stress">Stress</a></h3>
+<p>Stress is non-phonemic, and is positioned in a word based on a weight determined by the vowel quality and onset consonant. Syllables containing long vowels are heavier than short, and those are heavier than devoiced vowels. After this, syllables with an ejective consonant will be heavier than those without. Finally, when more than one syllable are the same weight, the stress is placed on the last-most of them.</p>
+<h2 id="orthography"><a class="header" href="#orthography">Orthography</a></h2>
+<p>Written Ochailwen was carefully controlled under the Hebdomad, and even today the writings are uncommon and rarely copied except for use by magic practitioners.</p>
+<p>Ochailwen has its own written form, which is an abugida of 13 consonant letters and 8 diacritics. Five of the diacritics are used to denote the following vowel of a consonant, with the remaining three used in combinations to mark the vowels as long or devoiced, and to mark the consonant as ejective.</p>
+<p>This system is imitated when transcribing the language into Freetongue. Although the vowels are indicated as actual letters, diacritics are used to indicate their quality, and more diacritics are used on the consonants to indicate when they are ejective. In Freetongue transcription, initial glottal stops are not marked, but can be assumed to exist if the word starts with a vowel.</p>
+<!-- -->
+<table class="elbie orthography">
+ <caption>
+Spelling for Ochailwen </caption>
+ <thead>
+  <tr class="column-head">
+   <th class="column-header">
+Phoneme   </th>
+   <th class="column-header">
+Freetongue Alphabet   </th>
+   <th class="column-header">
+Phoneme   </th>
+   <th class="column-header">
+Freetongue Alphabet   </th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr class="body-row">
+   <td>
+/a/   </td>
+   <td>
+a   </td>
+   <td>
+/o̥/   </td>
+   <td>
+o̊   </td>
+  </tr>
+  <tr class="body-row">
+   <td>
+/aː/   </td>
+   <td>
+ā   </td>
+   <td>
+/p/   </td>
+   <td>
+p   </td>
+  </tr>
+  <tr class="body-row">
+   <td>
+/ḁ/   </td>
+   <td>
+å   </td>
+   <td>
+/pʼ/   </td>
+   <td>
+p’   </td>
+  </tr>
+  <tr class="body-row">
+   <td>
+/e/   </td>
+   <td>
+e   </td>
+   <td>
+/s/   </td>
+   <td>
+s   </td>
+  </tr>
+  <tr class="body-row">
+   <td>
+/eː/   </td>
+   <td>
+ē   </td>
+   <td>
+/t/   </td>
+   <td>
+t   </td>
+  </tr>
+  <tr class="body-row">
+   <td>
+/e̥/   </td>
+   <td>
+e̊   </td>
+   <td>
+/tʼ/   </td>
+   <td>
+t’   </td>
+  </tr>
+  <tr class="body-row">
+   <td>
+/i/   </td>
+   <td>
+i   </td>
+   <td>
+/t͜s/   </td>
+   <td>
+ts   </td>
+  </tr>
+  <tr class="body-row">
+   <td>
+/iː/   </td>
+   <td>
+ī   </td>
+   <td>
+/t͜sʼ/   </td>
+   <td>
+ts’   </td>
+  </tr>
+  <tr class="body-row">
+   <td>
+/i̥/   </td>
+   <td>
+i̊   </td>
+   <td>
+/u/   </td>
+   <td>
+u   </td>
+  </tr>
+  <tr class="body-row">
+   <td>
+/k/   </td>
+   <td>
+k   </td>
+   <td>
+/uː/   </td>
+   <td>
+ū   </td>
+  </tr>
+  <tr class="body-row">
+   <td>
+/kʼ/   </td>
+   <td>
+k’   </td>
+   <td>
+/u̥/   </td>
+   <td>
+ů   </td>
+  </tr>
+  <tr class="body-row">
+   <td>
+/l/   </td>
+   <td>
+l   </td>
+   <td>
+/w/   </td>
+   <td>
+w   </td>
+  </tr>
+  <tr class="body-row">
+   <td>
+/m/   </td>
+   <td>
+m   </td>
+   <td>
+/x/   </td>
+   <td>
+ch   </td>
+  </tr>
+  <tr class="body-row">
+   <td>
+/n/   </td>
+   <td>
+n   </td>
+   <td>
+/ɾ/   </td>
+   <td>
+r   </td>
+  </tr>
+  <tr class="body-row">
+   <td>
+/o/   </td>
+   <td>
+o   </td>
+   <td>
+/ʃ/   </td>
+   <td>
+sh   </td>
+  </tr>
+  <tr class="body-row">
+   <td>
+/oː/   </td>
+   <td>
+ō   </td>
+   <td>
+/ʔ/   </td>
+   <td>
+ʽ   </td>
+  </tr>
+ </tbody>
+</table>
+<h2 id="lexicon"><a class="header" href="#lexicon">Lexicon</a></h2>
+<p>The lexicon below is a collection of proper names in the language. Remember that number is not indicated in the word, but in a separate particle, so the same word is used for both plural and singular.</p>
+<!-- -->
+<p><strong>ōchaʽilwēn</strong>. (/ʔoːxaʔilweːn/): Language of the Hebdomad</p>
+<p><strong>inannak</strong>. (/ʔinannak/): The world</p>
+<p><strong>ōriʽå</strong>. (/ʔoːɾiʔḁ/): The god Oria</p>
+<p><strong>aʽilwēn</strong>. (/ʔaʔilweːn/): The god Eilwain</p>
+<p><strong>astāp’e̊</strong>. (/ʔastaːpʼe̥/): The god Astaffe</p>
+<p><strong>ātton</strong>. (/ʔaːtton/): The god Atton</p>
+<p><strong>sāpawt’i̊</strong>. (/saːpawtʼi̥/): The god Sabowth</p>
+<p><strong>eʽaw</strong>. (/ʔeʔaw/): The god Eow</p>
+<p><strong>iltāpawt’i̊</strong>. (/ʔiltaːpawtʼi̥/): The god Ildabowth</p>
+<p><strong>ts’āmat</strong>. (/t͜sʼaːmat/): The dragon Chaamat</p>
+<p><strong>pechīmat</strong>. (/pexiːmat/): The dragon Behiimat</p>
+<p><strong>sīsat</strong>. (/siːsat/): The dragon Siisat</p>
+<p><strong>īt’åch</strong>. (/ʔiːtʼḁx/): The titan Ithax</p>
+<p><strong>ēlp’e̊</strong>. (/ʔeːlpʼe̥/): Elf</p>
+<p><strong>kůnōl</strong>. (/ku̥noːl/): Gnole</p>
+<p><strong>chi̊ʽūman</strong>. (/xi̥ʔuːman/): Human</p>
+<p><strong>pīchekī</strong>. (/piːxekiː/): Mantids</p>
+<p><strong>ōriků</strong>. (/ʔoːɾiku̥/): Orghu</p>
+<p><strong>shůwakse</strong>. (/ʃu̥wakse/): Saurians</p>
+<p><strong>lop’e</strong>. (/lopʼe/): Sea Peoples</p>
+<p><strong>shīruwran</strong>. (/ʃiːɾuwɾan/): Shirrwern</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../languages/forest-elven.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../credits.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../languages/forest-elven.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../credits.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../theme/pagetoc.js"></script>
+
+
+
+    </div>
+    </body>
+</html>
